@@ -37,31 +37,21 @@
             </div>
 
             <!-- Apple-style minimal text overlay -->
-            <div class="hero-overlay-content reveal active">
-                <h2>Perfa-Pik.</h2>
-                <h3>The ultimate modular mount.</h3>
-                <a href="#design" class="btn-glass">Discover Excellence</a>
-                <br>
-                <a href="shop.html" class="btn-order" style="margin-top:20px;">Shop Now &rarr;</a>
+            <div class="hero-overlay-content reveal active" style="pointer-events: none;">
+                <h2 style="font-size: 4rem; font-weight: 400; letter-spacing: -0.02em;">Non-Tripod</h2>
+            </div>
+            
+            <div class="hero-buttons-container">
+                <a href="shop.html" class="btn-glass" style="padding: 16px 40px; font-size: 16px;">Shop Now &rarr;</a>
             </div>
         </section>
     </div>
 
-    <!-- New Section: Problem Statement -->
-    <section class="container" style="padding: 120px 20px; text-align: center;">
-        <div style="font-size: 11px; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px;">The problem</div>
-        <h2 style="font-size: 3rem; color: #FFFFFF; font-family: var(--font-heading); font-weight: 300; letter-spacing: -0.02em; margin-bottom: 40px;">Six stands. One problem.</h2>
-        <div style="width: 80px; height: 1px; background: var(--border-color); margin: 0 auto 40px;"></div>
-        <p style="max-width: 560px; margin: 0 auto 40px; color: var(--text-light); line-height: 1.8; font-size: 1.1rem;">You own a mic arm. A light stand. A phone tripod. A camera rig. They clutter your space, take forever to set up, and never quite fit your workflow. The Non-Tripod replaces all of them.</p>
-        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-            <span style="font-size: 12px; color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 100px; padding: 6px 16px;">Mic Array</span>
-            <span style="font-size: 12px; color: var(--text-muted); padding: 6px 4px;">&middot;</span>
-            <span style="font-size: 12px; color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 100px; padding: 6px 16px;">LED Lighting</span>
-            <span style="font-size: 12px; color: var(--text-muted); padding: 6px 4px;">&middot;</span>
-            <span style="font-size: 12px; color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 100px; padding: 6px 16px;">Camera Rig</span>
-            <span style="font-size: 12px; color: var(--text-muted); padding: 6px 4px;">&middot;</span>
-            <span style="font-size: 12px; color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 100px; padding: 6px 16px;">Smartphone</span>
-        </div>
+    <section class="container" style="padding: 160px 20px; text-align: center; background: var(--bg-dark);">
+        <div class="reveal" style="font-size: 12px; color: var(--text-muted); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 24px; font-weight: 500;">The problem</div>
+        <h2 class="reveal text-gradient-mask" style="font-size: 5.5rem; color: #FFFFFF; font-family: var(--font-heading); font-weight: 300; letter-spacing: -0.03em; margin-bottom: 40px; line-height: 1.05; transition-delay: 0.1s;">Less gear.<br>More freedom.</h2>
+        <p class="reveal" style="max-width: 600px; margin: 0 auto 40px; color: #FFF; line-height: 1.6; font-size: 1.6rem; font-weight: 300; transition-delay: 0.2s;">Carbon fibre. Precision engineering. Built to last.</p>
+        <p class="reveal" style="color: var(--text-muted); font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; transition-delay: 0.3s; font-weight: 500;">Built to last. Built to go anywhere.</p>
     </section>
 
     <!-- Section 2: The Multi-Tool Analogy (Scrollytelling) -->
@@ -108,35 +98,34 @@
         </section>
     </div>
 
-    <!-- New Section: Three Key Features -->
-    <section class="container" style="padding: 100px 20px; border-top: 0.5px solid var(--border-color); border-bottom: 0.5px solid var(--border-color);">
+    <section class="container" style="padding: 140px 20px; text-align: center; background: var(--bg-dark);">
         <style>
             .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; }
-            @media(max-width: 768px) { .features-grid { grid-template-columns: 1fr; gap: 40px; } }
-            .feature-col { text-align: center; display: flex; flex-direction: column; align-items: center; }
-            .feature-num { font-size: 80px; font-weight: 300; color: rgba(255,255,255,0.05); margin-bottom: -40px; user-select: none; }
-            .feature-heading { font-size: 24px; color: #FFF; font-weight: 600; margin-bottom: 20px; z-index: 1; position: relative; }
-            .feature-divider { width: 40px; height: 1px; background: var(--border-color); margin-bottom: 24px; }
-            .feature-body { color: rgba(255,255,255,0.6); line-height: 1.8; font-size: 15px; }
+            @media(max-width: 768px) { .features-grid { grid-template-columns: 1fr; gap: 60px; } }
+            .feature-col { text-align: center; display: flex; flex-direction: column; align-items: center; position: relative; }
+            .feature-num { font-size: 100px; font-weight: 300; background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: -50px; user-select: none; }
+            .feature-heading { font-size: 26px; color: #FFF; font-weight: 400; font-family: var(--font-heading); letter-spacing: -0.01em; margin-bottom: 24px; z-index: 1; position: relative; }
+            .feature-divider { width: 1px; height: 40px; background: rgba(201, 169, 110, 0.4); margin-bottom: 24px; }
+            .feature-body { color: rgba(255,255,255,0.5); line-height: 1.8; font-size: 16px; font-weight: 300; max-width: 280px; }
         </style>
         <div class="features-grid">
-            <div class="feature-col">
+            <div class="feature-col reveal" style="transition-delay: 0.1s;">
                 <div class="feature-num">01</div>
                 <h3 class="feature-heading">Built strong.</h3>
                 <div class="feature-divider"></div>
-                <p class="feature-body">Engineered to hold your gear steady through every shoot. No wobble, no drift, no compromise — whatever you mount, it stays exactly where you put it.</p>
+                <p class="feature-body">Engineered to hold your gear steady through every shoot. No wobble, no drift, no compromise.</p>
             </div>
-            <div class="feature-col">
+            <div class="feature-col reveal" style="transition-delay: 0.2s;">
                 <div class="feature-num">02</div>
                 <h3 class="feature-heading">Desk or tripod.</h3>
                 <div class="feature-divider"></div>
-                <p class="feature-body">Works straight out of the box on your desk, on any standard tripod, or mounted anywhere on set. One product, every environment.</p>
+                <p class="feature-body">Works straight out of the box on your desk, on any standard tripod, or mounted anywhere on set.</p>
             </div>
-            <div class="feature-col">
+            <div class="feature-col reveal" style="transition-delay: 0.3s;">
                 <div class="feature-num">03</div>
                 <h3 class="feature-heading">Fits in your pocket.</h3>
                 <div class="feature-divider"></div>
-                <p class="feature-body">The most compact full-featured production mount you'll own. Slip it in your bag and take your entire setup anywhere.</p>
+                <p class="feature-body">The most compact full-featured production mount. Slip it in your bag and take it anywhere.</p>
             </div>
         </div>
     </section>
