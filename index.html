@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfa-Pik | The Non-Tripod Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Outfit:wght@700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="Perfa-Pik Logo">
+                <span>Non-Tripod</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#design">Design</a></li>
+                <li><a href="#usage">Usage</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Slide 1: Hero Fullscreen Scrollytelling -->
+    <div class="hero-scroll-container" id="about">
+        <section class="hero-sticky-slide">
+            <!-- Fullscreen Canvas Background -->
+            <div class="canvas-container">
+                <canvas id="hero-canvas"></canvas>
+            </div>
+
+            <!-- Apple-style minimal text overlay -->
+            <div class="hero-overlay-content reveal active">
+                <h2>Perfa-Pik.</h2>
+                <h3>The ultimate modular mount.</h3>
+                <a href="#design" class="btn-glass">Discover Excellence</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Section 2: The Multi-Tool Analogy (Scrollytelling) -->
+    <div class="multi-tool-scroll-container" id="multi-tool">
+        <section class="multi-tool-sticky-slide">
+            <!-- Fullscreen Canvas Background for Sec 2 -->
+            <div class="multi-tool-canvas-container">
+                <canvas id="multi-tool-canvas"></canvas>
+            </div>
+
+            <!-- Top Center Headline -->
+            <div class="multi-tool-header">
+                <h2 class="text-gradient-mask">The Swiss Army Knife of Production.</h2>
+                <h3 class="text-gradient-mask subhead">One core. Infinite configurations.</h3>
+            </div>
+
+            <!-- Dynamic Pop-In Labels with Leader Lines -->
+            <div class="dynamic-labels-container">
+                <!-- Data attributes to store activation frames -->
+                <div class="dynamic-label" id="label-audio" data-frame="40">
+                    <div class="label-text">Audio<br><span class="label-desc">Mic Array</span></div>
+                    <div class="leader-line"></div>
+                </div>
+                <div class="dynamic-label" id="label-lighting" data-frame="60">
+                    <div class="label-text">Lighting<br><span class="label-desc">LED Panel</span></div>
+                    <div class="leader-line"></div>
+                </div>
+                <div class="dynamic-label" id="label-cinema" data-frame="80">
+                    <div class="label-text">Cinema<br><span class="label-desc">Mirrorless rig</span></div>
+                    <div class="leader-line"></div>
+                </div>
+                <div class="dynamic-label" id="label-mobile" data-frame="100">
+                    <div class="label-text">Mobile<br><span class="label-desc">Smartphone</span></div>
+                    <div class="leader-line"></div>
+                </div>
+            </div>
+
+            <!-- Bottom Center Body Copy -->
+            <div class="multi-tool-footer">
+                <p>Engineered for the uncompromising creator. The Non-Tripod isn't just a mount—it's a modular
+                    ecosystem. From cinematic DSLR rigs to minimalist mobile setups, it adapts to your workflow in
+                    seconds. Same footprint, entirely different possibilities.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Slide 2: Versatility -->
+    <section class="container" id="design">
+        <div class="brochure-slide">
+            <div class="slide-image reveal floating">
+                <img src="assets/images/product_logo.png" alt="Non-Tripod Ireland"
+                    style="width: 80%; margin: 0 auto; display: block;">
+            </div>
+            <div class="slide-content reveal">
+                <h2>Perfa-Pik.<br>A compact versatile product.</h2>
+                <p>An aesthetically pleasing, robust quality product with many photographic and lifestyle uses.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Slide 5: Technical Details -->
+    <section class="container" id="gallery">
+        <div class="reveal" style="width: 100%;">
+            <h2 style="text-align: center; margin-bottom: 60px;">Precision in every detail.</h2>
+            <div class="tech-gallery">
+                <div class="tech-card floating">
+                    <img src="assets/images/product_profile.jpg" alt="Non-Tripod Full Profile">
+                    <h3>Modular Excellence</h3>
+                    <p>Designed for multi-device setups and extreme versatility.</p>
+                </div>
+                <div class="tech-card floating-delay">
+                    <img src="assets/images/ball_head_detail.jpg" alt="Ball Head Detail">
+                    <h3>Precision Control</h3>
+                    <p>360° rotation with absolute locked stability.</p>
+                </div>
+                <div class="tech-card floating-slow">
+                    <img src="assets/images/twist_lok_sleeve.jpg" alt="Twist-Lok Detail">
+                    <h3>Twist-Lok Technology</h3>
+                    <p>Instant secure height adjustment in any environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6: 3D Image Carousel -->
+    <section class="container" id="usage"
+        style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+        <div class="reveal" style="text-align: center; width: 100%;">
+            <h2 style="font-size: 3rem; margin-bottom: 60px;">Who knew you could do so much...?</h2>
+            <div class="scene">
+                <div class="a3d" style="--n: 12">
+                    <img class="carousel-card" src="https://images.unsplash.com/photo-1540968221243-29f5d70540bf?w=280"
+                        style="--i: 0" alt="jellifish" />
+                    <img class="carousel-card" src="https://images.unsplash.com/photo-1596135187959-562c650d98bc?w=280"
+                        style="--i: 1" alt="jellifish" />
+                    <img class="carousel-card" src="https://images.unsplash.com/photo-1628944682084-831f35256163?w=280"
+                        style="--i: 2" alt="jellifish" />
+                    <img class="carousel-card" src="https://images.unsplash.com/photo-1590013330451-3946e83e0392?w=280"
+                        style="--i: 3" alt="jellifish" />
+                    <img class="carousel-card" src="https://images.unsplash.com/photo-1590421959604-741d0eec0a2e?w=280"
+                        style="--i: 4" alt="jellifish" />
+                    <img class="carousel-card" src="https://images.unsplash.com/photo-1572613000712-eadc57acbecd?w=280"
+                        style="--i: 5" alt="jellifish" />
+                    <img class="carousel-card" src="https://images.unsplash.com/photo-1570097192570-4b49a6736f9f?w=280"
+                        style="--i: 6" alt="jellifish" />
+                    <img class="carousel-card" src="https://images.unsplash.com/photo-1620789550663-2b10e0080354?w=280"
+                        style="--i: 7" alt="jellifish" />
+                    <img class="carousel-card" src="https://images.unsplash.com/photo-1617775623669-20bff4ffaa5c?w=280"
+                        style="--i: 8" alt="jellifish" />
+                    <img class="carousel-card" src="https://images.unsplash.com/photo-1548600916-dc8492f8e845?w=280"
+                        style="--i: 9" alt="jellifish" />
+                    <img class="carousel-card" src="https://images.unsplash.com/photo-1573824969595-a76d4365a2e6?w=280"
+                        style="--i: 10" alt="jellifish" />
+                    <img class="carousel-card" src="https://images.unsplash.com/photo-1633936929709-59991b5fdd72?w=280"
+                        style="--i: 11" alt="jellifish" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: Reviews -->
+    <section class="review-section">
+        <h2 class="about-title">WHAT OUR CUSTOMERS SAY</h2>
+
+        <div class="review-carousel-container">
+            <button class="nav-arrow left">‹</button>
+            <div class="carousel-track">
+                <div class="review-card" data-index="0">
+                    <div class="testimonial-content">
+                        <div class="quote-mark">"</div>
+                        <p class="testimonial-text">"Looking for the more than just paycheck? job directory is filled
+                            with opportunities that align with your passion and values, whether you're seeking a role in
+                            a dynamic startup, a well-established company or a agency."</p>
+                        <div class="testimonial-author">
+                            <h4>Marvin McKinney</h4>
+                            <p>Product Designer, Russia</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-index="1">
+                    <div class="testimonial-content">
+                        <div class="quote-mark">"</div>
+                        <p class="testimonial-text">"Amazing platform that connects talented professionals with
+                            incredible opportunities. The team's dedication to matching the right people with the right
+                            roles is truly exceptional and makes all the difference."</p>
+                        <div class="testimonial-author">
+                            <h4>Sarah Johnson</h4>
+                            <p>Marketing Director, Canada</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card" data-index="2">
+                    <div class="testimonial-content">
+                        <div class="quote-mark">"</div>
+                        <p class="testimonial-text">"The level of professionalism and support provided throughout the
+                            entire process was outstanding. They truly understand what both companies and candidates
+                            need to create successful partnerships."</p>
+                        <div class="testimonial-author">
+                            <h4>David Chen</h4>
+                            <p>Tech Lead, Singapore</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="nav-arrow right">›</button>
+        </div>
+
+        <div class="dots">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+        </div>
+
+        <button class="cta-button">Let's Talk About Partnership</button>
+    </section>
+
+    <!-- Slide 8: Final Branding -->
+    <section class="container final-branding">
+        <div class="reveal center-content">
+            <h2 class="final-tagline">Position. Click.</h2>
+            <img src="assets/images/logo.png" alt="Perfa-Pik Logo" class="final-logo">
+        </div>
+
+        <div class="dyson-sticker">
+            <div class="serial-grid">
+                <div class="serial-item">
+                    <span class="label">SERIAL NO.</span>
+                    <span class="value">123 UK-A12345</span>
+                </div>
+                <div class="barcode">|||||||||||||||||||||||||||||</div>
+            </div>
+            <div class="compliance-logos">
+                <span>CE</span>
+                <span>BEAB Approved</span>
+                <span>TÜV</span>
+            </div>
+            <div class="dyson-footer">
+                FOR PATENT INFORMATION SEE OPERATING MANUAL<br>
+                PERFA-PIK LIMITED SN16 ORP ENGLAND, UK
+            </div>
+        </div>
+    </section>
+
+    <footer class="container">
+        <img src="assets/images/logo.png" alt="Perfa-Pik" class="footer-logo">
+        <p class="text-muted">© 2026 Perfa-Pik. Position Click. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
