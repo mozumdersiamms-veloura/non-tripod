@@ -258,6 +258,119 @@
             border-top: 1px solid #E5E5E7;
             background: #FAFAF8;
         }
+        /* Drawer Styles */
+        .btn-expander {
+            background: #FFFFFF;
+            border: none;
+            border-top: 0.5px solid #E5E5E7;
+            width: 100%;
+            height: 40px;
+            color: #6E6E73;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: var(--font-main);
+        }
+        .btn-expander:hover {
+            background: #F5F5F5;
+        }
+        .detail-drawer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: #FAFAF8;
+            border-top: 0px solid transparent;
+        }
+        .detail-drawer.open {
+            max-height: 1000px;
+            border-top: 0.5px solid #E5E5E7;
+        }
+        .drawer-inner {
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 768px) {
+            .drawer-inner {
+                grid-template-columns: 1fr;
+            }
+        }
+        .drawer-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border: 0.5px solid #E5E5E7;
+            background: #FFF;
+        }
+        .drawer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .drawer-label {
+            font-size: 11px;
+            color: #6E6E73;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .drawer-body {
+            font-size: 13px;
+            color: #1D1D1F;
+            line-height: 1.5;
+            margin-top: -8px;
+        }
+        .drawer-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-top: -8px;
+        }
+        .drawer-list li {
+            font-size: 13px;
+            color: #1D1D1F;
+            margin-bottom: 6px;
+            display: flex;
+            gap: 6px;
+            line-height: 1.4;
+        }
+        .drawer-list li::before {
+            content: "\2013";
+            color: #6E6E73;
+            flex-shrink: 0;
+        }
+        .drawer-specs {
+            width: 100%;
+            font-size: 12px;
+            border-collapse: collapse;
+            margin-top: -8px;
+        }
+        .drawer-specs tr {
+            border-bottom: 0.5px solid #E5E5E7;
+        }
+        .drawer-specs td {
+            padding: 6px 0;
+        }
+        .drawer-specs td:first-child {
+            color: #6E6E73;
+            width: 40%;
+        }
+        .drawer-specs td:last-child {
+            color: #1D1D1F;
+        }
+        .drawer-link {
+            font-size: 12px;
+            color: #1D1D1F;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        .drawer-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body class="shop-listing">
@@ -307,6 +420,36 @@
                     
                     <a href="shop-non-tripod.html" class="btn-view">View Product</a>
                 </div>
+                
+                <button class="btn-expander" onclick="toggleDrawer(this)">See Details &darr;</button>
+                <div class="detail-drawer">
+                    <div class="drawer-inner">
+                        <img src="assets/images/product_profile.jpg" alt="Non-Tripod Detail" class="drawer-img">
+                        <div class="drawer-content">
+                            <div class="drawer-label">What it does</div>
+                            <div class="drawer-body">The Non-Tripod is a single modular core that supports four completely different equipment configurations &mdash; audio, lighting, cinema, and mobile &mdash; without changing its physical footprint. Swap between setups in seconds.</div>
+                            
+                            <div class="drawer-label">Key features</div>
+                            <ul class="drawer-list">
+                                <li>360&deg; precision ball head with absolute locked stability</li>
+                                <li>Twist-Lok sleeve for instant tool-free height adjustment</li>
+                                <li>Four configurations: Audio &middot; Lighting &middot; Cinema &middot; Mobile</li>
+                                <li>CE &middot; BEAB Approved &middot; TÜV certified</li>
+                            </ul>
+                            
+                            <div class="drawer-label">Specs</div>
+                            <table class="drawer-specs">
+                                <tr><td>Ball head rotation</td><td>360&deg;</td></tr>
+                                <tr><td>Compatibility</td><td>Universal &frac14;" thread</td></tr>
+                                <tr><td>Certifications</td><td>CE &middot; BEAB &middot; TÜV</td></tr>
+                                <tr><td>Designed</td><td>Ireland</td></tr>
+                                <tr><td>Manufactured</td><td>England, UK</td></tr>
+                            </table>
+                            
+                            <a href="shop-non-tripod.html" class="drawer-link">View Full Product Page &rarr;</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Card 2: Octopus -->
@@ -329,6 +472,35 @@
                         <button class="btn-notify">Notify Me</button>
                     </div>
                 </div>
+                
+                <button class="btn-expander" onclick="toggleDrawer(this)">See Details &darr;</button>
+                <div class="detail-drawer">
+                    <div class="drawer-inner">
+                        <img src="assets/images/ball_head_detail.jpg" alt="Octopus Detail" class="drawer-img" style="object-fit: contain; padding: 10px;">
+                        <div class="drawer-content">
+                            <div class="drawer-label">What it does</div>
+                            <div class="drawer-body">The Octopus mounts to the top of your Non-Tripod column and adds 6&ndash;8 circumferential accessory ports plus a top-face connection for the Solo Chronos. One hub replaces multiple stands.</div>
+                            
+                            <div class="drawer-label">What it adds</div>
+                            <ul class="drawer-list">
+                                <li>Simultaneous multi-accessory mounting</li>
+                                <li>Compatible with LED arms, mic mounts, Solo Chronos</li>
+                                <li>Mounts via Twist-Lok to existing Non-Tripod column</li>
+                                <li>Transforms your setup into a full one-person rig</li>
+                            </ul>
+                            
+                            <div class="drawer-label">Specs</div>
+                            <table class="drawer-specs">
+                                <tr><td>Ports</td><td>6&ndash;8 circumferential + 1 top</td></tr>
+                                <tr><td>Interface</td><td>Proprietary Perfa-Pik</td></tr>
+                                <tr><td>Finish</td><td>Matte black anodised</td></tr>
+                                <tr><td>Status</td><td>In development</td></tr>
+                            </table>
+                            
+                            <a href="shop-octopus.html" class="drawer-link">View Full Product Page &rarr;</a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Card 3: Solo Chronos -->
@@ -349,6 +521,35 @@
                     <div class="notify-row">
                         <input type="email" placeholder="your@email.com" class="notify-input">
                         <button class="btn-notify">Notify Me</button>
+                    </div>
+                </div>
+                
+                <button class="btn-expander" onclick="toggleDrawer(this)">See Details &darr;</button>
+                <div class="detail-drawer">
+                    <div class="drawer-inner">
+                        <img src="assets/images/twist_lok_sleeve.jpg" alt="Solo Chronos Detail" class="drawer-img">
+                        <div class="drawer-content">
+                            <div class="drawer-label">What it does</div>
+                            <div class="drawer-body">The Solo Chronos is a dual-rail sliding mount that holds any device from a 4.6" smartphone to a 13" iPad Pro. The twin-rail design prevents rotation under load &mdash; a critical advantage over budget single-rod alternatives.</div>
+                            
+                            <div class="drawer-label">Device range</div>
+                            <ul class="drawer-list">
+                                <li>Compact smartphones from 4.6"</li>
+                                <li>Standard smartphones up to 7"</li>
+                                <li>Small tablets 10"&ndash;11" including iPad and Samsung Tab</li>
+                                <li>Large tablets up to 13" including iPad Pro 12.9"</li>
+                            </ul>
+                            
+                            <div class="drawer-label">Specs</div>
+                            <table class="drawer-specs">
+                                <tr><td>Rail system</td><td>Dual-rod sliding</td></tr>
+                                <tr><td>Locking</td><td>Central knurled dial</td></tr>
+                                <tr><td>Interface</td><td>Proprietary Perfa-Pik</td></tr>
+                                <tr><td>Status</td><td>In development</td></tr>
+                            </table>
+                            
+                            <a href="shop-solo-chronos.html" class="drawer-link">View Full Product Page &rarr;</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -382,5 +583,17 @@
         <p class="text-muted" style="margin: 0; font-size: 14px;">&copy; 2026 Perfa-Pik. Position Click. All Rights Reserved.</p>
     </footer>
 
+    <script>
+        function toggleDrawer(btn) {
+            const drawer = btn.nextElementSibling;
+            if (drawer.classList.contains('open')) {
+                drawer.classList.remove('open');
+                btn.innerHTML = 'See Details &darr;';
+            } else {
+                drawer.classList.add('open');
+                btn.innerHTML = 'Hide Details &uarr;';
+            }
+        }
+    </script>
 </body>
 </html>
