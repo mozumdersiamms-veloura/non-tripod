@@ -76,6 +76,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 textOverlay.style.opacity = Math.max(0, opacity);
             }
 
+            const buttonsContainer = document.querySelector('.hero-buttons-container');
+            if (buttonsContainer) {
+                // Reveal near the end of the scroll animation
+                if (scrollFraction > 0.85) {
+                    buttonsContainer.classList.add('visible');
+                } else {
+                    buttonsContainer.classList.remove('visible');
+                }
+            }
+
             // Use requestAnimationFrame for smooth drawing
             requestAnimationFrame(() => {
                 if (images[frameIndex]) {

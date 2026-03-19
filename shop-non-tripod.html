@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Non-Tripod | Purchase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* SHOP PAGE SPECIFIC STYLES */
+        body.shop-page {
+            background: linear-gradient(180deg, #FAFAF8 0%, #FFFFFF 100%);
+            color: #1D1D1F;
+            font-family: var(--font-main);
+        }
+        
+        .shop-page nav {
+            background: rgba(250, 250, 248, 0.8);
+            border-bottom: 0.5px solid #E5E5E7;
+        }
+
+        .shop-page .text-muted {
+            color: #6E6E73;
+        }
+
+        .shop-page .divider {
+            height: 0.5px;
+            background-color: #E5E5E7;
+            width: 100%;
+            margin: 24px 0;
+        }
+
+        .shop-section {
+            padding: 80px 0;
+            min-height: auto;
+        }
+
+        /* Section 1: Product */
+        .product-split {
+            display: grid;
+            grid-template-columns: 60% 40%;
+            gap: 60px;
+            margin-top: 100px;
+        }
+        
+        @media (max-width: 968px) {
+            .product-split {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .gallery-main {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border: 0.5px solid #E5E5E7;
+            border-radius: 4px;
+        }
+
+        .gallery-thumbnails {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-thumb {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border: 0.5px solid #E5E5E7;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .gallery-thumb.active {
+            border: 1px solid #1D1D1F;
+        }
+
+        .purchase-panel {
+            padding-top: 20px;
+        }
+
+        .eyebrow {
+            font-size: 11px;
+            color: #6E6E73;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .product-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 52px;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .cert-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .cert-pill {
+            border: 0.5px solid #E5E5E7;
+            padding: 4px 12px;
+            font-size: 11px;
+            color: #6E6E73;
+            border-radius: 100px;
+        }
+
+        .price {
+            font-size: 32px;
+            font-weight: 500;
+            color: #1D1D1F;
+            margin-bottom: 8px;
+        }
+
+        .price-sub {
+            font-size: 13px;
+            color: #6E6E73;
+        }
+
+        .label-head {
+            font-size: 11px;
+            color: #6E6E73;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .config-options {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .config-pill {
+            border: 0.5px solid #E5E5E7;
+            background: transparent;
+            padding: 10px 20px;
+            font-size: 13px;
+            color: #6E6E73;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font-main);
+        }
+
+        .config-pill.active {
+            border: 1px solid #1D1D1F;
+            color: #1D1D1F;
+        }
+
+        .config-desc {
+            font-size: 13px;
+            color: #6E6E73;
+        }
+
+        .quantity-row {
+            display: inline-flex;
+            align-items: center;
+            border: 0.5px solid #E5E5E7;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .qty-btn {
+            background: transparent;
+            border: none;
+            padding: 12px 16px;
+            cursor: pointer;
+            color: #1D1D1F;
+            font-size: 16px;
+        }
+
+        .qty-num {
+            padding: 0 16px;
+            font-size: 14px;
+            color: #1D1D1F;
+        }
+
+        .btn-preorder {
+            display: block;
+            width: 100%;
+            height: 52px;
+            background: #1D1D1F;
+            color: #FFFFFF;
+            border: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 30px;
+            margin-bottom: 16px;
+        }
+
+        .btn-preorder:hover {
+            background: #3d3d3f;
+        }
+
+        .notify-link {
+            display: block;
+            text-align: center;
+            color: #6E6E73;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .notify-link:hover {
+            text-decoration: underline;
+        }
+
+        .trust-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px;
+            color: #6E6E73;
+        }
+
+        /* Section 2: How It Works */
+        .how-bg {
+            background: #FFFFFF;
+            border-top: 0.5px solid #E5E5E7;
+            border-bottom: 0.5px solid #E5E5E7;
+        }
+
+        .section-label {
+            font-size: 11px;
+            color: #6E6E73;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+        }
+
+        .section-label.center {
+            text-align: center;
+        }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .how-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .how-col {
+            position: relative;
+            padding-top: 40px;
+        }
+
+        .large-numeral {
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-size: 140px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            color: #F0F0F0;
+            line-height: 1;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .how-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .how-content h4 {
+            font-size: 18px;
+            color: #1D1D1F;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .how-content p {
+            font-size: 15px;
+            color: #6E6E73;
+            line-height: 1.6;
+        }
+
+        /* Section 3: Specifications */
+        .specs-bg {
+            background: #FAFAF8;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .specs-table tr {
+            border-bottom: 0.5px solid #E5E5E7;
+        }
+
+        .specs-table td {
+            padding: 20px 0;
+            font-size: 15px;
+        }
+
+        .specs-table td:first-child {
+            color: #6E6E73;
+            width: 40%;
+        }
+
+        .specs-table td:last-child {
+            color: #1D1D1F;
+            font-weight: 500;
+        }
+
+        /* Section 4: Configurations */
+        .configs-bg {
+            background: #FFFFFF;
+        }
+        
+        .configs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        
+        @media (max-width: 968px) {
+            .configs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 500px) {
+            .configs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .config-card {
+            border: 0.5px solid #E5E5E7;
+            padding: 24px;
+            border-radius: 4px;
+            background: #FFFFFF;
+        }
+
+        .config-card h4 {
+            font-size: 18px;
+            color: #1D1D1F;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .config-card p {
+            font-size: 13px;
+            color: #6E6E73;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            min-height: 40px;
+        }
+
+        .config-card .replaces {
+            font-size: 11px;
+            color: #6E6E73;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        /* Specific override for footer */
+        .shop-page footer {
+            border-top: 1px solid #E5E5E7;
+            background: #FAFAF8;
+        }
+    </style>
+</head>
+<body class="shop-page">
+
+    <nav>
+        <div class="container nav-content">
+            <div style="display: flex; align-items: center; gap: 30px;">
+                <a href="shop.html" style="text-decoration: none; color: #1D1D1F; font-weight: 500; font-size: 0.9rem; opacity: 0.7; transition: opacity 0.3s;">&larr; Back to Shop</a>
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="Perfa-Pik Logo">
+                    <span>Non-Tripod</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#about" style="color: #1D1D1F;">About</a></li>
+                <li><a href="index.html#system" style="color: #1D1D1F;">The System</a></li>
+                <li><a href="shop.html" style="color: #1D1D1F;">Shop</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Section 1 -->
+    <section class="container shop-section">
+        <div class="product-split">
+            <!-- Left Column: Imagery -->
+            <div class="product-gallery">
+                <img src="assets/images/product_profile.jpg" alt="The Non-Tripod" class="gallery-main" id="mainImage">
+                <div class="gallery-thumbnails">
+                    <img src="assets/images/product_profile.jpg" alt="Full profile" class="gallery-thumb active" onclick="updateImage(this, 'assets/images/product_profile.jpg')">
+                    <img src="assets/images/ball_head_detail.jpg" alt="Ball head" class="gallery-thumb" onclick="updateImage(this, 'assets/images/ball_head_detail.jpg')">
+                    <img src="assets/images/twist_lok_sleeve.jpg" alt="Twist-Lok" class="gallery-thumb" onclick="updateImage(this, 'assets/images/twist_lok_sleeve.jpg')">
+                </div>
+            </div>
+
+            <!-- Right Column: Purchase Panel -->
+            <div class="purchase-panel">
+                <div class="eyebrow">Modular Mount System &middot; Designed in Ireland &middot; Made in England</div>
+                <h1 class="product-title">The Non-Tripod</h1>
+                
+                <div class="cert-row">
+                    <span class="cert-pill">CE</span>
+                    <span class="cert-pill">BEAB Approved</span>
+                    <span class="cert-pill">TÜV</span>
+                </div>
+
+                <div class="divider"></div>
+                
+                <div class="price">£299</div>
+                <div class="price-sub">Free UK shipping &middot; Ships in 4–6 weeks</div>
+
+                <div class="divider"></div>
+                
+                <span class="label-head">Configuration</span>
+                <div class="config-options">
+                    <button class="config-pill active" onclick="updateConfig(this, 'Microphone array for podcast and voiceover')">Audio</button>
+                    <button class="config-pill" onclick="updateConfig(this, 'LED panel mount for streamers and YouTubers')">Lighting</button>
+                    <button class="config-pill" onclick="updateConfig(this, 'Mirrorless and DSLR rig for on-location shoots')">Cinema</button>
+                    <button class="config-pill" onclick="updateConfig(this, 'Smartphone mount for vloggers and social creators')">Mobile</button>
+                </div>
+                <div class="config-desc" id="configDesc">Microphone array for podcast and voiceover</div>
+
+                <div class="divider"></div>
+
+                <span class="label-head">Quantity</span>
+                <div class="quantity-row">
+                    <button class="qty-btn" onclick="updateQty(-1)">&minus;</button>
+                    <span class="qty-num" id="qtyNum">1</span>
+                    <button class="qty-btn" onclick="updateQty(1)">&plus;</button>
+                </div>
+
+                <button class="btn-preorder">Pre-order Now</button>
+                <a href="#" class="notify-link">Notify me at launch &rarr;</a>
+
+                <div class="divider"></div>
+
+                <div class="trust-row">
+                    <span>Certified (CE &middot; BEAB &middot; TÜV)</span>
+                    <span>&middot;</span>
+                    <span>Designed in Ireland</span>
+                    <span>&middot;</span>
+                    <span>Free Returns</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: How it works -->
+    <section class="how-bg shop-section">
+        <div class="container">
+            <div class="section-label center">How it works</div>
+            <div class="how-grid">
+                <div class="how-col">
+                    <div class="large-numeral">01</div>
+                    <div class="how-content">
+                        <h4>Position</h4>
+                        <p>Mount your device in seconds.<br>No tools, no fuss.</p>
+                    </div>
+                </div>
+                <div class="how-col">
+                    <div class="large-numeral">02</div>
+                    <div class="how-content">
+                        <h4>Twist-Lok</h4>
+                        <p>Adjust height instantly with the<br>twist-and-lock collar.</p>
+                    </div>
+                </div>
+                <div class="how-col">
+                    <div class="large-numeral">03</div>
+                    <div class="how-content">
+                        <h4>Click</h4>
+                        <p>Lock the ball head with absolute<br>rigidity. Zero drift.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Specifications -->
+    <section class="specs-bg shop-section">
+        <div class="container">
+            <div class="section-label">Specifications</div>
+            <table class="specs-table">
+                <tr>
+                    <td>Weight</td>
+                    <td>TBC</td>
+                </tr>
+                <tr>
+                    <td>Load capacity</td>
+                    <td>TBC</td>
+                </tr>
+                <tr>
+                    <td>Height range</td>
+                    <td>TBC</td>
+                </tr>
+                <tr>
+                    <td>Ball head rotation</td>
+                    <td>360&deg;</td>
+                </tr>
+                <tr>
+                    <td>Compatibility</td>
+                    <td>Universal &frac14;" thread</td>
+                </tr>
+                <tr>
+                    <td>Certifications</td>
+                    <td>CE &middot; BEAB Approved &middot; TÜV</td>
+                </tr>
+                <tr>
+                    <td>Designed</td>
+                    <td>Ireland</td>
+                </tr>
+                <tr>
+                    <td>Manufactured</td>
+                    <td>England, UK</td>
+                </tr>
+                <tr>
+                    <td>Warranty</td>
+                    <td>TBC</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- Section 4: Configurations -->
+    <section class="configs-bg shop-section">
+        <div class="container">
+            <div class="section-label">Configurations</div>
+            <div class="configs-grid">
+                <div class="config-card">
+                    <h4>Audio</h4>
+                    <p>Mic array for podcast and voiceover</p>
+                    <div class="replaces">Replaces: mic arm + separate stand</div>
+                </div>
+                <div class="config-card">
+                    <h4>Lighting</h4>
+                    <p>LED panel mount for home and studio</p>
+                    <div class="replaces">Replaces: light stand + clamp adapter</div>
+                </div>
+                <div class="config-card">
+                    <h4>Cinema</h4>
+                    <p>Mirrorless rig for narrative and documentary</p>
+                    <div class="replaces">Replaces: camera cage + tripod system</div>
+                </div>
+                <div class="config-card">
+                    <h4>Mobile</h4>
+                    <p>Smartphone mount for creators on the go</p>
+                    <div class="replaces">Replaces: phone tripod / gorilla pod</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Also in the system -->
+    <section class="container shop-section" style="padding-top: 40px; padding-bottom: 80px;">
+        <div class="section-label">Also in the system</div>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 24px;">
+            <!-- Octopus Link Card -->
+            <div style="border: 0.5px solid #E5E5E7; padding: 24px; border-radius: 4px; display: flex; align-items: center; gap: 24px; background: #FFF;">
+                <img src="assets/images/octopus-1.png" alt="The Octopus" style="width: 100px; height: 100px; object-fit: contain; padding: 8px; border: 0.5px solid #E5E5E7;">
+                <div>
+                    <h4 style="font-size: 18px; color: #1D1D1F; font-weight: 600; margin-bottom: 8px;">The Octopus</h4>
+                    <p style="font-size: 13px; color: #6E6E73; margin-bottom: 12px;">Multi-port hub. Turn your Non-Tripod into a full production rig.</p>
+                    <a href="shop-octopus.html" style="font-size: 13px; color: #1D1D1F; font-weight: 500; text-decoration: none;">Learn More &rarr;</a>
+                </div>
+            </div>
+            <!-- Solo Chronos Link Card -->
+            <div style="border: 0.5px solid #E5E5E7; padding: 24px; border-radius: 4px; display: flex; align-items: center; gap: 24px; background: #FFF;">
+                <img src="assets/images/twist_lok_sleeve.jpg" alt="The Solo Chronos" style="width: 100px; height: 100px; object-fit: cover; border: 0.5px solid #E5E5E7;">
+                <div>
+                    <h4 style="font-size: 18px; color: #1D1D1F; font-weight: 600; margin-bottom: 8px;">The Solo Chronos</h4>
+                    <p style="font-size: 13px; color: #6E6E73; margin-bottom: 12px;">Universal sliding mount. Holds any device from iPhone to iPad Pro.</p>
+                    <a href="shop-solo-chronos.html" style="font-size: 13px; color: #1D1D1F; font-weight: 500; text-decoration: none;">Learn More &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="container" style="padding: 60px 0; text-align: center;">
+        <img src="assets/images/logo.png" alt="Perfa-Pik" style="width: 120px; margin-bottom: 20px;">
+        <p class="text-muted" style="margin: 0; font-size: 14px;">&copy; 2026 Perfa-Pik. Position Click. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function updateImage(thumbElem, src) {
+            document.getElementById('mainImage').src = src;
+            document.querySelectorAll('.gallery-thumb').forEach(el => el.classList.remove('active'));
+            thumbElem.classList.add('active');
+        }
+
+        function updateConfig(pillElem, desc) {
+            document.querySelectorAll('.config-pill').forEach(el => el.classList.remove('active'));
+            pillElem.classList.add('active');
+            document.getElementById('configDesc').innerText = desc;
+        }
+
+        let qty = 1;
+        function updateQty(change) {
+            qty += change;
+            if (qty < 1) qty = 1;
+            document.getElementById('qtyNum').innerText = qty;
+        }
+    </script>
+</body>
+</html>

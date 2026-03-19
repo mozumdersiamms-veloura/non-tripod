@@ -22,8 +22,8 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
-                <li><a href="#design">Design</a></li>
-                <li><a href="#usage">Usage</a></li>
+                <li><a href="#system">The System</a></li>
+                <li><a href="shop.html">Shop</a></li>
             </ul>
         </div>
     </nav>
@@ -41,6 +41,8 @@
                 <h2>Perfa-Pik.</h2>
                 <h3>The ultimate modular mount.</h3>
                 <a href="#design" class="btn-glass">Discover Excellence</a>
+                <br>
+                <a href="shop.html" class="btn-order" style="margin-top:20px;">Shop Now &rarr;</a>
             </div>
         </section>
     </div>
@@ -247,6 +249,52 @@
             </div>
         </div>
     </section>
+
+    <!-- New Section: The System -->
+    <section class="container" id="system" style="padding: 120px 40px; text-align: center;">
+        <h2 style="font-size: 3rem; margin-bottom: 60px;">The Perfa-Pik System</h2>
+        
+        <img src="assets/images/product_profile.jpg" alt="The System Full Rig" style="width: 100%; height: 500px; object-fit: cover; border-radius: 4px; margin-bottom: 60px;">
+        
+        <div class="system-cards-grid">
+            <div class="system-card">
+                <h3>The Non-Tripod</h3>
+                <p>The core. One mount, four configurations.</p>
+                <a href="shop-non-tripod.html" class="btn-glass">Discover Excellence</a>
+            </div>
+            <div class="system-card">
+                <h3>The Octopus</h3>
+                <p>Turn your Non-Tripod into a full production hub.</p>
+                <a href="shop-octopus.html" class="btn-glass">Discover Excellence</a>
+            </div>
+            <div class="system-card">
+                <h3>The Solo Chronos</h3>
+                <p>Mount any device from iPhone to iPad Pro.</p>
+                <a href="shop-solo-chronos.html" class="btn-glass">Discover Excellence</a>
+            </div>
+        </div>
+
+        <div class="system-banner">
+            <div class="system-banner-text">
+                <h3>The Complete System</h3>
+                <p>Everything you need. One footprint.</p>
+            </div>
+            <div class="system-banner-action">
+                <button id="notifyBtn" class="btn-order" style="padding: 16px 36px; margin: 0; background: transparent; cursor: pointer;">Notify Me at Launch</button>
+                <div id="notifyForm" style="display: none; align-items: center; gap: 10px;">
+                    <input type="email" placeholder="your@email.com" class="dark-input">
+                    <button class="btn-glass" style="padding: 16px 24px; border: none; cursor: pointer;">Submit</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('notifyBtn').addEventListener('click', function() {
+            this.style.display = 'none';
+            document.getElementById('notifyForm').style.display = 'flex';
+        });
+    </script>
 
     <footer class="container">
         <img src="assets/images/logo.png" alt="Perfa-Pik" class="footer-logo">

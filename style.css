@@ -207,24 +207,64 @@ section {
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
 
-.btn-glass {
-    display: inline-block;
-    padding: 16px 36px;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 100px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+.hero-buttons-container {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 16px;
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
 }
 
-.btn-glass:hover {
-    background: rgba(0, 0, 0, 0.85);
-    transform: scale(1.05);
+.hero-buttons-container.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.btn-apple-primary {
+    background: #ffffff;
+    color: #1d1d1f;
+    border: none;
+    padding: 15px 32px;
+    border-radius: 40px;
+    font-size: 15px;
+    font-family: var(--font-main);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-apple-primary:hover {
+    background: #e5e5e5;
+    transform: scale(1.02);
+}
+
+.btn-apple-secondary {
+    background: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 14px 32px;
+    border-radius: 40px;
+    font-size: 15px;
+    font-family: var(--font-main);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-apple-secondary:hover {
+    background: rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.02);
 }
 
 /* Use Case Grid */
@@ -1029,4 +1069,101 @@ footer {
     .nav-arrow.right {
         right: 20px;
     }
+}
+
+/* ------------------------------------- */
+/* The System Section (Index Homepage)   */
+/* ------------------------------------- */
+
+.system-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+@media (max-width: 768px) {
+    .system-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.system-card {
+    background: #111;
+    border: 1px solid #C9A96E;
+    padding: 40px 30px;
+    border-radius: 4px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.system-card h3 {
+    font-family: 'Cormorant Garamond', var(--font-heading);
+    font-size: 2rem;
+    font-weight: 300;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.system-card p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 30px;
+    flex-grow: 1;
+}
+
+.system-banner {
+    background: #111;
+    border: 1px solid #C9A96E;
+    border-radius: 4px;
+    padding: 60px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .system-banner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.system-banner-text h3 {
+    font-family: 'Cormorant Garamond', var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.system-banner-text p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.system-banner-action {
+    display: flex;
+    align-items: center;
+}
+
+.dark-input {
+    background: #000;
+    border: 1px solid #333;
+    padding: 16px 20px;
+    color: #fff;
+    border-radius: 100px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    outline: none;
+    width: 250px;
+}
+
+.dark-input:focus {
+    border-color: #C9A96E;
 }
