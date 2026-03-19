@@ -47,6 +47,23 @@
         </section>
     </div>
 
+    <!-- New Section: Problem Statement -->
+    <section class="container" style="padding: 120px 20px; text-align: center;">
+        <div style="font-size: 11px; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px;">The problem</div>
+        <h2 style="font-size: 3rem; color: #FFFFFF; font-family: var(--font-heading); font-weight: 300; letter-spacing: -0.02em; margin-bottom: 40px;">Six stands. One problem.</h2>
+        <div style="width: 80px; height: 1px; background: var(--border-color); margin: 0 auto 40px;"></div>
+        <p style="max-width: 560px; margin: 0 auto 40px; color: var(--text-light); line-height: 1.8; font-size: 1.1rem;">You own a mic arm. A light stand. A phone tripod. A camera rig. They clutter your space, take forever to set up, and never quite fit your workflow. The Non-Tripod replaces all of them.</p>
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+            <span style="font-size: 12px; color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 100px; padding: 6px 16px;">Mic Array</span>
+            <span style="font-size: 12px; color: var(--text-muted); padding: 6px 4px;">&middot;</span>
+            <span style="font-size: 12px; color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 100px; padding: 6px 16px;">LED Lighting</span>
+            <span style="font-size: 12px; color: var(--text-muted); padding: 6px 4px;">&middot;</span>
+            <span style="font-size: 12px; color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 100px; padding: 6px 16px;">Camera Rig</span>
+            <span style="font-size: 12px; color: var(--text-muted); padding: 6px 4px;">&middot;</span>
+            <span style="font-size: 12px; color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 100px; padding: 6px 16px;">Smartphone</span>
+        </div>
+    </section>
+
     <!-- Section 2: The Multi-Tool Analogy (Scrollytelling) -->
     <div class="multi-tool-scroll-container" id="multi-tool">
         <section class="multi-tool-sticky-slide">
@@ -91,6 +108,39 @@
         </section>
     </div>
 
+    <!-- New Section: Three Key Features -->
+    <section class="container" style="padding: 100px 20px; border-top: 0.5px solid var(--border-color); border-bottom: 0.5px solid var(--border-color);">
+        <style>
+            .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; }
+            @media(max-width: 768px) { .features-grid { grid-template-columns: 1fr; gap: 40px; } }
+            .feature-col { text-align: center; display: flex; flex-direction: column; align-items: center; }
+            .feature-num { font-size: 80px; font-weight: 300; color: rgba(255,255,255,0.05); margin-bottom: -40px; user-select: none; }
+            .feature-heading { font-size: 24px; color: #FFF; font-weight: 600; margin-bottom: 20px; z-index: 1; position: relative; }
+            .feature-divider { width: 40px; height: 1px; background: var(--border-color); margin-bottom: 24px; }
+            .feature-body { color: rgba(255,255,255,0.6); line-height: 1.8; font-size: 15px; }
+        </style>
+        <div class="features-grid">
+            <div class="feature-col">
+                <div class="feature-num">01</div>
+                <h3 class="feature-heading">Built strong.</h3>
+                <div class="feature-divider"></div>
+                <p class="feature-body">Engineered to hold your gear steady through every shoot. No wobble, no drift, no compromise — whatever you mount, it stays exactly where you put it.</p>
+            </div>
+            <div class="feature-col">
+                <div class="feature-num">02</div>
+                <h3 class="feature-heading">Desk or tripod.</h3>
+                <div class="feature-divider"></div>
+                <p class="feature-body">Works straight out of the box on your desk, on any standard tripod, or mounted anywhere on set. One product, every environment.</p>
+            </div>
+            <div class="feature-col">
+                <div class="feature-num">03</div>
+                <h3 class="feature-heading">Fits in your pocket.</h3>
+                <div class="feature-divider"></div>
+                <p class="feature-body">The most compact full-featured production mount you'll own. Slip it in your bag and take your entire setup anywhere.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Slide 2: Versatility -->
     <section class="container" id="design">
         <div class="brochure-slide">
@@ -99,8 +149,7 @@
                     style="width: 80%; margin: 0 auto; display: block;">
             </div>
             <div class="slide-content reveal">
-                <h2>Perfa-Pik.<br>A compact versatile product.</h2>
-                <p>An aesthetically pleasing, robust quality product with many photographic and lifestyle uses.</p>
+                <h2>Engineered in every detail.</h2>
             </div>
         </div>
     </section>
@@ -131,11 +180,86 @@
         </div>
     </section>
 
+    <!-- New Section: The System -->
+    <section class="container" id="system" style="padding: 100px 20px; text-align: center;">
+        <div style="font-size: 11px; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px;">The ecosystem</div>
+        <h2 style="font-size: 3.5rem; font-family: var(--font-heading); font-weight: 300; margin-bottom: 24px; color: #FFF;">The Perfa-Pik System</h2>
+        <p style="color: var(--text-muted); max-width: 480px; margin: 0 auto 80px; font-size: 1.1rem; line-height: 1.6;">Three products. One unified system. Built to grow with your workflow.</p>
+        
+        <style>
+            .system-new-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 60px; text-align: left; }
+            @media(max-width: 768px) { .system-new-grid { grid-template-columns: 1fr; } }
+            .sys-card-new { border: 1px solid var(--border-color); background: rgba(201, 169, 110, 0.05); border-radius: 4px; overflow: hidden; display: flex; flex-direction: column; }
+            .sys-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .sys-card-body { padding: 24px; flex-grow: 1; display: flex; flex-direction: column; }
+            .sys-badge { display: inline-block; padding: 4px 10px; border-radius: 100px; font-size: 11px; color: var(--text-muted); border: 1px solid var(--border-color); margin-bottom: 16px; align-self: flex-start; }
+            .sys-title { font-family: var(--font-heading); color: #FFF; font-size: 24px; margin-bottom: 12px; }
+            .sys-desc { color: var(--text-muted); font-size: 14px; margin-bottom: 24px; flex-grow: 1; line-height: 1.5; }
+            .sys-div { width: 100%; height: 1px; background: var(--border-color); margin-bottom: 24px; }
+            .sys-banner-container { border-top: 1px solid var(--border-color); padding: 60px 0; display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+            @media(max-width: 768px) { .sys-banner-container { flex-direction: column; text-align: center; } }
+        </style>
+
+        <div class="system-new-grid">
+            <div class="sys-card-new">
+                <img src="assets/images/product_profile.jpg" alt="The Non-Tripod" class="sys-card-img">
+                <div class="sys-card-body">
+                    <div class="sys-title">The Non-Tripod</div>
+                    <p class="sys-desc">The core modular mount. Four configurations, one footprint.</p>
+                    <div class="sys-div"></div>
+                    <a href="shop-non-tripod.html" class="btn-glass" style="text-align:center;">View Product</a>
+                </div>
+            </div>
+            <div class="sys-card-new">
+                <img src="assets/images/ball_head_detail.jpg" alt="The Octopus" class="sys-card-img">
+                <div class="sys-card-body">
+                    <div class="sys-badge">Coming Soon</div>
+                    <div class="sys-title">The Octopus</div>
+                    <p class="sys-desc">Turn your Non-Tripod into a full production hub.</p>
+                    <div class="sys-div"></div>
+                    <a href="shop-octopus.html" class="btn-glass" style="text-align:center;">Learn More</a>
+                </div>
+            </div>
+            <div class="sys-card-new">
+                <img src="assets/images/twist_lok_sleeve.jpg" alt="The Solo Chronos" class="sys-card-img">
+                <div class="sys-card-body">
+                    <div class="sys-badge">Coming Soon</div>
+                    <div class="sys-title">The Solo Chronos</div>
+                    <p class="sys-desc">Mount any device from iPhone to iPad Pro.</p>
+                    <div class="sys-div"></div>
+                    <a href="shop-solo-chronos.html" class="btn-glass" style="text-align:center;">Learn More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="sys-banner-container">
+            <div style="text-align: left;">
+                <h3 style="font-size: 32px; font-family: var(--font-heading); color: #FFF; margin-bottom: 8px;">The Complete System</h3>
+                <p style="color: var(--text-muted); font-size: 14px;">Everything you need. One footprint.</p>
+            </div>
+            <div>
+                <button id="systemNotifyBtn" class="btn-order" style="padding: 16px 36px; margin: 0; cursor: pointer;">Notify Me at Launch</button>
+                <div id="systemNotifyWrapper" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease;">
+                    <div style="display: flex; align-items: center; margin-top: 16px; border: 1px solid var(--border-color); border-radius: 4px; overflow: hidden; height: 48px;">
+                        <input type="email" placeholder="your@email.com" class="dark-input" style="height: 100%; border: none; border-radius: 0; margin: 0; flex-grow: 1;">
+                        <button class="btn-glass" style="height: 100%; border: none; border-radius: 0; margin: 0; padding: 0 24px;">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('systemNotifyBtn')?.addEventListener('click', function() {
+            document.getElementById('systemNotifyWrapper').style.maxHeight = '100px';
+        });
+    </script>
+
     <!-- Slide 6: 3D Image Carousel -->
     <section class="container" id="usage"
         style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
         <div class="reveal" style="text-align: center; width: 100%;">
-            <h2 style="font-size: 3rem; margin-bottom: 60px;">Who knew you could do so much...?</h2>
+            <h2 style="font-size: 3rem; margin-bottom: 60px;">One mount. Every situation.</h2>
             <div class="scene">
                 <div class="a3d" style="--n: 12">
                     <img class="carousel-card" src="https://images.unsplash.com/photo-1540968221243-29f5d70540bf?w=280"
@@ -250,51 +374,20 @@
         </div>
     </section>
 
-    <!-- New Section: The System -->
-    <section class="container" id="system" style="padding: 120px 40px; text-align: center;">
-        <h2 style="font-size: 3rem; margin-bottom: 60px;">The Perfa-Pik System</h2>
-        
-        <img src="assets/images/product_profile.jpg" alt="The System Full Rig" style="width: 100%; height: 500px; object-fit: cover; border-radius: 4px; margin-bottom: 60px;">
-        
-        <div class="system-cards-grid">
-            <div class="system-card">
-                <h3>The Non-Tripod</h3>
-                <p>The core. One mount, four configurations.</p>
-                <a href="shop-non-tripod.html" class="btn-glass">Discover Excellence</a>
-            </div>
-            <div class="system-card">
-                <h3>The Octopus</h3>
-                <p>Turn your Non-Tripod into a full production hub.</p>
-                <a href="shop-octopus.html" class="btn-glass">Discover Excellence</a>
-            </div>
-            <div class="system-card">
-                <h3>The Solo Chronos</h3>
-                <p>Mount any device from iPhone to iPad Pro.</p>
-                <a href="shop-solo-chronos.html" class="btn-glass">Discover Excellence</a>
-            </div>
-        </div>
 
-        <div class="system-banner">
-            <div class="system-banner-text">
-                <h3>The Complete System</h3>
-                <p>Everything you need. One footprint.</p>
-            </div>
-            <div class="system-banner-action">
-                <button id="notifyBtn" class="btn-order" style="padding: 16px 36px; margin: 0; background: transparent; cursor: pointer;">Notify Me at Launch</button>
-                <div id="notifyForm" style="display: none; align-items: center; gap: 10px;">
-                    <input type="email" placeholder="your@email.com" class="dark-input">
-                    <button class="btn-glass" style="padding: 16px 24px; border: none; cursor: pointer;">Submit</button>
-                </div>
-            </div>
+
+    <!-- New Section: Email Waitlist -->
+    <section class="container" style="padding: 100px 20px; text-align: center; border-top: 1px solid var(--border-color);">
+        <div style="font-size: 11px; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px;">Launching soon</div>
+        <h2 style="font-size: 3rem; font-family:var(--font-heading); font-weight: 300; color: #FFF; margin-bottom: 24px; letter-spacing: -0.02em;">The Octopus and Solo Chronos are coming.</h2>
+        <p style="color: var(--text-muted); max-width: 480px; margin: 0 auto 40px; line-height: 1.8;">Join the waitlist and be the first to know when they ship. No spam, just the launch.</p>
+        
+        <div style="display: flex; justify-content: center; max-width: 400px; margin: 0 auto 16px; height: 48px;">
+            <input type="email" placeholder="your@email.com" class="dark-input" style="flex-grow: 1; border-radius: 4px 0 0 4px; border-right: none;">
+            <button class="btn-glass" style="border-radius: 0 4px 4px 0; padding: 0 24px; background: rgba(201, 169, 110, 0.1);">Notify Me</button>
         </div>
+        <div style="font-size: 12px; color: rgba(255,255,255,0.4);">We'll only email you when it launches.</div>
     </section>
-
-    <script>
-        document.getElementById('notifyBtn').addEventListener('click', function() {
-            this.style.display = 'none';
-            document.getElementById('notifyForm').style.display = 'flex';
-        });
-    </script>
 
     <footer class="container">
         <img src="assets/images/logo.png" alt="Perfa-Pik" class="footer-logo">
