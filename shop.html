@@ -3,594 +3,329 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Non-Tripod | Shop The System</title>
+    <title>Buy Non-Tripod - Perfa-Pik</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body.shop-listing {
-            background: linear-gradient(180deg, #FAFAF8 0%, #FFFFFF 100%);
-            color: #1D1D1F;
-            font-family: var(--font-main);
-            min-height: 100vh;
+        /* Apple Shop Layout specific styles */
+        body {
+            background-color: #f5f5f7;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1d1d1f;
+            padding-top: 60px;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
         }
         
-        .shop-listing nav {
-            background: rgba(250, 250, 248, 0.8);
-            border-bottom: 0.5px solid #E5E5E7;
-        }
-
-        /* Section A */
-        .page-header {
-            padding: 140px 20px 60px;
-            text-align: center;
-        }
-        .header-eyebrow {
-            font-size: 11px;
-            color: #6E6E73;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-        .header-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 64px;
-            font-weight: 300;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-            color: #1D1D1F;
-        }
-        .header-subtext {
-            font-size: 15px;
-            color: #6E6E73;
-            margin-bottom: 60px;
-        }
-        .divider {
-            height: 0.5px;
-            background-color: #E5E5E7;
+        .global-nav {
+            position: fixed;
+            top: 0;
             width: 100%;
+            height: 52px;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 9999;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Section B */
-        .shop-cards-section {
-            padding: 80px 0;
+        .global-nav a {
+            color: #1d1d1f;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            opacity: 0.8;
+            transition: opacity 0.2s;
         }
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+
+        .global-nav a:hover {
+            opacity: 1;
         }
-        @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: 1fr;
+        
+        .shop-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px 120px;
+            display: flex;
+            gap: 80px;
+        }
+        
+        @media (max-width: 900px) {
+            .shop-container {
+                flex-direction: column;
+                padding-top: 40px;
+                gap: 40px;
             }
         }
-        .product-card {
-            background: #FFFFFF;
-            border: 0.5px solid #E5E5E7;
-            display: flex;
-            flex-direction: column;
-        }
-        .product-image {
-            width: 100%;
-            aspect-ratio: 3/4;
-            object-fit: cover;
-            border-bottom: 0.5px solid #E5E5E7;
-        }
-        .card-content {
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        .status-badge {
-            display: inline-block;
-            background: #F5F5F5;
-            color: #6E6E73;
-            font-size: 11px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 100px;
-            align-self: flex-start;
-            margin-bottom: 16px;
-        }
-        .status-spacer {
-            height: 23px; /* visual spacing matching badge height */
-            margin-bottom: 16px;
-        }
-        .card-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-weight: 300;
-            color: #1D1D1F;
-            margin-bottom: 8px;
-        }
-        .card-desc {
-            font-size: 14px;
-            color: #6E6E73;
-            margin-bottom: 24px;
-            line-height: 1.5;
-            flex-grow: 1;
-        }
-        .card-price {
-            font-size: 20px;
-            font-weight: 500;
-            color: #1D1D1F;
-            margin-bottom: 4px;
-        }
-        .card-price-sub {
-            font-size: 12px;
-            color: #6E6E73;
-        }
-        .card-price-tbc {
-            font-size: 16px;
-            color: #6E6E73;
-            margin-top: 6px;
-        }
-        .card-divider {
-            height: 0.5px;
-            background-color: #E5E5E7;
-            width: 100%;
-            margin: 20px 0;
-        }
-        .btn-view {
-            display: block;
-            width: 100%;
-            height: 44px;
-            line-height: 44px;
-            background: #1D1D1F;
-            color: #FFFFFF;
-            text-align: center;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            transition: background 0.2s;
-        }
-        .btn-view:hover { background: #3d3d3f; }
-        .notify-row {
-            display: flex;
-            gap: 8px;
-        }
-        .notify-input {
-            flex-grow: 1;
-            height: 44px;
-            border: 0.5px solid #E5E5E7;
-            padding: 0 12px;
-            font-family: var(--font-main);
-            font-size: 13px;
-            outline: none;
-            width: 10px; /* Let flex-grow handle sizing */
-        }
-        .notify-input:focus { border-color: #1D1D1F; }
-        .btn-notify {
-            height: 44px;
-            background: #1D1D1F;
-            color: #FFFFFF;
-            border: none;
-            padding: 0 16px;
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.2s;
-            white-space: nowrap;
-        }
-        .btn-notify:hover { background: #3d3d3f; }
 
-        /* Section C */
-        .bundle-banner {
-            background: #1D1D1F;
-            padding: 80px 20px;
-            text-align: center;
+        /* Left side - Sticky Image */
+        .shop-left {
+            flex: 1;
         }
-        .bundle-eyebrow {
-            font-size: 11px;
-            color: #6E6E73;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-        }
-        .bundle-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 52px;
-            font-weight: 300;
-            color: #FFFFFF;
-            margin-bottom: 16px;
-        }
-        .bundle-subtext {
-            font-size: 15px;
-            color: #6E6E73;
-            max-width: 500px;
-            margin: 0 auto 40px;
-            line-height: 1.5;
-        }
-        .bundle-divider {
-            height: 0.5px;
-            background-color: #4A4A4A;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto 40px;
-        }
-        .bundle-notify-text {
-            font-size: 13px;
-            color: #6E6E73;
-            margin-bottom: 20px;
-        }
-        .bundle-form {
+        
+        .sticky-gallery {
+            position: sticky;
+            top: 100px;
+            background: #fff;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
+            align-items: center;
+            height: 600px;
         }
-        .bundle-input {
-            width: 300px;
-            height: 44px;
-            background: #2A2A2A;
-            border: 1px solid #3A3A3A;
-            color: #FFFFFF;
-            padding: 0 16px;
-            font-family: var(--font-main);
-            font-size: 14px;
-            outline: none;
+
+        .sticky-gallery img {
+            max-width: 100%;
+            border-radius: 12px;
+            object-fit: cover;
         }
-        .bundle-input:focus { border-color: #6E6E73; }
-        .bundle-btn {
-            height: 44px;
-            background: #FFFFFF;
-            color: #1D1D1F;
-            border: none;
-            padding: 0 24px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-        }
-        .bundle-footer-certs {
-            font-size: 10px;
-            color: #4A4A4A;
-            letter-spacing: 0.05em;
+
+        /* Right side - Options */
+        .shop-right {
+            flex: 1;
+            padding-top: 20px;
         }
         
-        .shop-listing footer {
-            border-top: 1px solid #E5E5E7;
-            background: #FAFAF8;
+        .product-title {
+            font-size: 48px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            margin-top: 0;
         }
-        /* Drawer Styles */
-        .btn-expander {
-            background: #FFFFFF;
-            border: none;
-            border-top: 0.5px solid #E5E5E7;
-            width: 100%;
-            height: 40px;
-            color: #6E6E73;
-            font-size: 11px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: background 0.2s;
-            font-family: var(--font-main);
+        
+        .product-price {
+            font-size: 24px;
+            color: #1d1d1f;
+            font-weight: 400;
+            margin-bottom: 40px;
         }
-        .btn-expander:hover {
-            background: #F5F5F5;
+
+        .config-section {
+            margin-bottom: 40px;
         }
-        .detail-drawer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease;
-            background: #FAFAF8;
-            border-top: 0px solid transparent;
+        
+        .config-section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 16px;
         }
-        .detail-drawer.open {
-            max-height: 1000px;
-            border-top: 0.5px solid #E5E5E7;
-        }
-        .drawer-inner {
-            padding: 24px;
+
+        .config-grid {
             display: grid;
-            grid-template-columns: 80px 1fr;
-            gap: 20px;
-        }
-        @media (max-width: 768px) {
-            .drawer-inner {
-                grid-template-columns: 1fr;
-            }
-        }
-        .drawer-img {
-            width: 100%;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            border: 0.5px solid #E5E5E7;
-            background: #FFF;
-        }
-        .drawer-content {
-            display: flex;
-            flex-direction: column;
+            grid-template-columns: 1fr;
             gap: 16px;
         }
-        .drawer-label {
-            font-size: 11px;
-            color: #6E6E73;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-        .drawer-body {
-            font-size: 13px;
-            color: #1D1D1F;
-            line-height: 1.5;
-            margin-top: -8px;
-        }
-        .drawer-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            margin-top: -8px;
-        }
-        .drawer-list li {
-            font-size: 13px;
-            color: #1D1D1F;
-            margin-bottom: 6px;
+
+        .option-card {
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            padding: 20px;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.2s ease;
             display: flex;
-            gap: 6px;
-            line-height: 1.4;
+            justify-content: space-between;
+            align-items: center;
         }
-        .drawer-list li::before {
-            content: "\2013";
-            color: #6E6E73;
-            flex-shrink: 0;
+
+        .option-card:hover {
+            border-color: #86868b;
         }
-        .drawer-specs {
+
+        .option-card.selected {
+            border-color: #0071e3;
+            border-width: 2px;
+            padding: 19px; /* keep total height consistent */
+            background: #fff;
+            box-shadow: 0 0 0 1px #0071e3;
+        }
+
+        .option-details h4 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            margin-top: 0;
+        }
+
+        .option-details p {
+            font-size: 12px;
+            color: #86868b;
+            margin: 0;
+        }
+
+        .option-price {
+            font-size: 14px;
+            color: #1d1d1f;
+        }
+
+        .summary-box {
+            background: #fff;
+            border-radius: 18px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        .summary-total {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-add-bag {
+            display: block;
             width: 100%;
-            font-size: 12px;
-            border-collapse: collapse;
-            margin-top: -8px;
-        }
-        .drawer-specs tr {
-            border-bottom: 0.5px solid #E5E5E7;
-        }
-        .drawer-specs td {
-            padding: 6px 0;
-        }
-        .drawer-specs td:first-child {
-            color: #6E6E73;
-            width: 40%;
-        }
-        .drawer-specs td:last-child {
-            color: #1D1D1F;
-        }
-        .drawer-link {
-            font-size: 12px;
-            color: #1D1D1F;
+            background: #0071e3;
+            color: white;
+            text-align: center;
             text-decoration: none;
-            display: inline-block;
-            margin-top: 8px;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 400;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .btn-add-bag:hover {
+            background: #0077ED;
+        }
+        
+        .apple-pay-preview {
+            margin-top: 16px;
+            height: 56px;
+            border-radius: 12px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
             font-weight: 500;
+            font-size: 19px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s;
         }
-        .drawer-link:hover {
-            text-decoration: underline;
+
+        .apple-pay-preview:hover {
+            transform: scale(1.01);
         }
+        
+        .apple-pay-preview span {
+            margin-left: 6px;
+            font-weight: 600;
+        }
+
     </style>
 </head>
-<body class="shop-listing">
+<body>
 
-    <nav>
-        <div class="container nav-content">
-            <div style="display: flex; align-items: center; gap: 30px;">
-                <div class="logo">
-                    <img src="assets/images/logo.png" alt="Perfa-Pik Logo">
-                    <span>Non-Tripod</span>
-                </div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html#about" style="color:#1D1D1F">About</a></li>
-                <li><a href="index.html#system" style="color:#1D1D1F">The System</a></li>
-                <li><a href="shop.html" style="color:#1D1D1F">Shop</a></li>
-            </ul>
-        </div>
+    <nav class="global-nav">
+        <a href="index.html">← Back to Overview</a>
     </nav>
 
-    <!-- Section A: Page Header -->
-    <div class="page-header">
-        <div class="header-eyebrow">Perfa-Pik Collection</div>
-        <h1 class="header-title">The System</h1>
-        <div class="header-subtext">Designed in Ireland. Made in England.</div>
-    </div>
-    <div class="divider"></div>
-
-    <!-- Section B: Three Product Cards -->
-    <section class="container shop-cards-section">
-        <div class="products-grid">
+    <div class="shop-container">
+        <!-- Left: Image Sticky -->
+        <div class="shop-left">
+            <div class="sticky-gallery">
+                <img src="assets/images/product_profile.jpg" alt="Non-Tripod Set">
+            </div>
+        </div>
+        
+        <!-- Right: Configurator -->
+        <div class="shop-right">
+            <div style="font-size: 14px; color: #bf4800; font-weight: 600; margin-bottom: 8px;">New</div>
+            <h1 class="product-title">Buy Non-Tripod</h1>
+            <div class="product-price">From $149</div>
             
-            <!-- Card 1: Non-Tripod -->
-            <div class="product-card reveal">
-                <img src="assets/images/product_profile.jpg" alt="The Non-Tripod" class="product-image">
-                <div class="card-content">
-                    <div class="status-spacer"></div>
-                    <h2 class="card-title">The Non-Tripod</h2>
-                    <p class="card-desc">The core modular mount. Four configurations, one footprint.</p>
+            <div style="height: 1px; background: #d2d2d7; margin: 40px 0;"></div>
+            
+            <!-- Step 1 -->
+            <div class="config-section">
+                <h3>Build your ecosystem. <span style="color: #86868b">Add modules to your core setup.</span></h3>
+                <div class="config-grid">
                     
-                    <div>
-                        <div class="card-price">&pound;299</div>
-                        <div class="card-price-sub">Free UK shipping</div>
+                    <div class="option-card" data-price="49" id="opt-octopus" onclick="toggleOption('opt-octopus')">
+                        <div class="option-details">
+                            <h4>The Octopus Module</h4>
+                            <p>Full articulation arm system</p>
+                        </div>
+                        <div class="option-price">+$49</div>
                     </div>
                     
-                    <div class="card-divider"></div>
+                    <div class="option-card" data-price="29" id="opt-chronos" onclick="toggleOption('opt-chronos')">
+                        <div class="option-details">
+                            <h4>The Solo Chronos Clamp</h4>
+                            <p>Premium mobile & tablet mount</p>
+                        </div>
+                        <div class="option-price">+$29</div>
+                    </div>
                     
-                    <a href="shop-non-tripod.html" class="btn-view">View Product</a>
                 </div>
-                
-                <button class="btn-expander" onclick="toggleDrawer(this)">See Details &darr;</button>
-                <div class="detail-drawer">
-                    <div class="drawer-inner">
-                        <img src="assets/images/product_profile.jpg" alt="Non-Tripod Detail" class="drawer-img">
-                        <div class="drawer-content">
-                            <div class="drawer-label">What it does</div>
-                            <div class="drawer-body">The Non-Tripod is a single modular core that supports four completely different equipment configurations &mdash; audio, lighting, cinema, and mobile &mdash; without changing its physical footprint. Swap between setups in seconds.</div>
-                            
-                            <div class="drawer-label">Key features</div>
-                            <ul class="drawer-list">
-                                <li>360&deg; precision ball head with absolute locked stability</li>
-                                <li>Twist-Lok sleeve for instant tool-free height adjustment</li>
-                                <li>Four configurations: Audio &middot; Lighting &middot; Cinema &middot; Mobile</li>
-                                <li>CE &middot; BEAB Approved &middot; TÜV certified</li>
-                            </ul>
-                            
-                            <div class="drawer-label">Specs</div>
-                            <table class="drawer-specs">
-                                <tr><td>Ball head rotation</td><td>360&deg;</td></tr>
-                                <tr><td>Compatibility</td><td>Universal &frac14;" thread</td></tr>
-                                <tr><td>Certifications</td><td>CE &middot; BEAB &middot; TÜV</td></tr>
-                                <tr><td>Designed</td><td>Ireland</td></tr>
-                                <tr><td>Manufactured</td><td>England, UK</td></tr>
-                            </table>
-                            
-                            <a href="shop-non-tripod.html" class="drawer-link">View Full Product Page &rarr;</a>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="config-section">
+                <h3>Finish. <span style="color: #86868b">Aircraft-grade anodized aluminum.</span></h3>
+                <div class="config-grid">
+                    <div class="option-card selected" style="cursor: default;">
+                        <div class="option-details">
+                            <h4>Space Black</h4>
+                            <p>Anti-reflective precision coating</p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Card 2: Octopus -->
-            <div class="product-card reveal">
-                <img src="assets/images/octopus-1.png" alt="The Octopus" class="product-image" style="object-fit: contain; padding: 20px;">
-                <div class="card-content">
-                    <div class="status-spacer"></div>
-                    <h2 class="card-title">The Octopus</h2>
-                    <p class="card-desc">Multi-port hub. Turn your Non-Tripod into a full production rig.</p>
-                    
-                    <div>
-                        <div class="card-price">&pound;149</div>
-                        <div class="card-price-sub">Free UK shipping</div>
-                    </div>
-                    
-                    <div class="card-divider"></div>
-                    
-                    <a href="shop-octopus.html" class="btn-view">View Product</a>
+            
+            <div class="summary-box">
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span id="price-total">$149.00</span>
                 </div>
-                
-                <button class="btn-expander" onclick="toggleDrawer(this)">See Details &darr;</button>
-                <div class="detail-drawer">
-                    <div class="drawer-inner">
-                        <img src="assets/images/ball_head_detail.jpg" alt="Octopus Detail" class="drawer-img" style="object-fit: contain; padding: 10px;">
-                        <div class="drawer-content">
-                            <div class="drawer-label">What it does</div>
-                            <div class="drawer-body">The Octopus mounts to the top of your Non-Tripod column and adds 6&ndash;8 circumferential accessory ports plus a top-face connection for the Solo Chronos. One hub replaces multiple stands.</div>
-                            
-                            <div class="drawer-label">What it adds</div>
-                            <ul class="drawer-list">
-                                <li>Simultaneous multi-accessory mounting</li>
-                                <li>Compatible with LED arms, mic mounts, Solo Chronos</li>
-                                <li>Mounts via Twist-Lok to existing Non-Tripod column</li>
-                                <li>Transforms your setup into a full one-person rig</li>
-                            </ul>
-                            
-                            <div class="drawer-label">Specs</div>
-                            <table class="drawer-specs">
-                                <tr><td>Ports</td><td>6&ndash;8 circumferential + 1 top</td></tr>
-                                <tr><td>Interface</td><td>Proprietary Perfa-Pik</td></tr>
-                                <tr><td>Finish</td><td>Matte black anodised</td></tr>
-                                <tr><td>Status</td><td>In development</td></tr>
-                            </table>
-                            
-                            <a href="shop-octopus.html" class="drawer-link">View Full Product Page &rarr;</a>
-                        </div>
-                    </div>
+                <a href="checkout.html" class="btn-add-bag">Proceed to Checkout</a>
+                <a href="checkout.html" class="apple-pay-preview">
+                   Buy with <span> Pay</span>
+                </a>
+                <div style="text-align: center; font-size: 12px; color: #86868b; margin-top: 20px;">
+                    Free shipping and free returns.
                 </div>
             </div>
-
-            <!-- Card 3: Solo Chronos -->
-            <div class="product-card reveal">
-                <img src="assets/images/twist_lok_sleeve.jpg" alt="The Solo Chronos" class="product-image">
-                <div class="card-content">
-                    <div class="status-badge">Coming Soon</div>
-                    <h2 class="card-title">The Solo Chronos</h2>
-                    <p class="card-desc">Universal sliding mount. Holds any device from iPhone to iPad Pro.</p>
-                    
-                    <div>
-                        <div class="card-price-tbc">Price TBC</div>
-                        <div class="card-price-sub">&nbsp;</div>
-                    </div>
-                    
-                    <div class="card-divider"></div>
-                    
-                    <div class="notify-row">
-                        <input type="email" placeholder="your@email.com" class="notify-input">
-                        <button class="btn-notify">Notify Me</button>
-                    </div>
-                </div>
-                
-                <button class="btn-expander" onclick="toggleDrawer(this)">See Details &darr;</button>
-                <div class="detail-drawer">
-                    <div class="drawer-inner">
-                        <img src="assets/images/twist_lok_sleeve.jpg" alt="Solo Chronos Detail" class="drawer-img">
-                        <div class="drawer-content">
-                            <div class="drawer-label">What it does</div>
-                            <div class="drawer-body">The Solo Chronos is a dual-rail sliding mount that holds any device from a 4.6" smartphone to a 13" iPad Pro. The twin-rail design prevents rotation under load &mdash; a critical advantage over budget single-rod alternatives.</div>
-                            
-                            <div class="drawer-label">Device range</div>
-                            <ul class="drawer-list">
-                                <li>Compact smartphones from 4.6"</li>
-                                <li>Standard smartphones up to 7"</li>
-                                <li>Small tablets 10"&ndash;11" including iPad and Samsung Tab</li>
-                                <li>Large tablets up to 13" including iPad Pro 12.9"</li>
-                            </ul>
-                            
-                            <div class="drawer-label">Specs</div>
-                            <table class="drawer-specs">
-                                <tr><td>Rail system</td><td>Dual-rod sliding</td></tr>
-                                <tr><td>Locking</td><td>Central knurled dial</td></tr>
-                                <tr><td>Interface</td><td>Proprietary Perfa-Pik</td></tr>
-                                <tr><td>Status</td><td>In development</td></tr>
-                            </table>
-                            
-                            <a href="shop-solo-chronos.html" class="drawer-link">View Full Product Page &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Section C: The Complete System banner -->
-    <div class="bundle-banner">
-        <div class="bundle-eyebrow">Bundle</div>
-        <h2 class="bundle-title">The Complete System</h2>
-        <p class="bundle-subtext">Non-Tripod &middot; Octopus &middot; Solo Chronos &middot; LED Arms. Everything you need. One footprint.</p>
-        
-        <div class="bundle-divider"></div>
-        
-        <div class="bundle-notify-text">Be first to know when the full system ships</div>
-        
-        <div class="bundle-form">
-            <input type="email" placeholder="your@email.com" class="bundle-input">
-            <button class="bundle-btn">Notify Me</button>
-        </div>
-        
-        <div class="bundle-footer-certs">
-            CE &middot; BEAB Approved &middot; TÜV &middot; Designed in Ireland &middot; Made in England
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="container" style="padding: 60px 0; text-align: center;">
-        <img src="assets/images/logo.png" alt="Perfa-Pik" style="width: 120px; margin-bottom: 20px;">
-        <p class="text-muted" style="margin: 0; font-size: 14px;">&copy; 2026 Perfa-Pik. Position Click. All Rights Reserved.</p>
-    </footer>
 
     <script>
-        function toggleDrawer(btn) {
-            const drawer = btn.nextElementSibling;
-            if (drawer.classList.contains('open')) {
-                drawer.classList.remove('open');
-                btn.innerHTML = 'See Details &darr;';
-            } else {
-                drawer.classList.add('open');
-                btn.innerHTML = 'Hide Details &uarr;';
-            }
+        let basePrice = 149;
+        
+        function toggleOption(id) {
+            const card = document.getElementById(id);
+            card.classList.toggle('selected');
+            updateTotal();
         }
+        
+        function updateTotal() {
+            let total = basePrice;
+            document.querySelectorAll('.option-card.selected[data-price]').forEach(card => {
+                total += parseInt(card.getAttribute('data-price'));
+            });
+            document.getElementById('price-total').innerText = '$' + total + '.00';
+            localStorage.setItem('cartTotal', total); // Save to local storage for checkout
+        }
+        
+        // init total on load
+        localStorage.setItem('cartTotal', basePrice);
     </script>
 </body>
 </html>

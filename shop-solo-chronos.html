@@ -3,360 +3,331 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Solo Chronos | Shop</title>
+    <title>Buy The Solo Chronos - Perfa-Pik</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* SHOP PAGE SPECIFIC STYLES */
-        body.shop-page {
-            background: linear-gradient(180deg, #FAFAF8 0%, #FFFFFF 100%);
-            color: #1D1D1F;
-            font-family: var(--font-main);
+        /* Apple Shop Layout specific styles */
+        body {
+            background-color: #f5f5f7;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1d1d1f;
+            padding-top: 60px;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
         }
-        .shop-page nav {
-            background: rgba(250, 250, 248, 0.8);
-            border-bottom: 0.5px solid #E5E5E7;
-        }
-        .shop-page .text-muted { color: #6E6E73; }
-        .shop-page .divider {
-            height: 0.5px;
-            background-color: #E5E5E7;
+        
+        .global-nav {
+            position: fixed;
+            top: 0;
             width: 100%;
-            margin: 24px 0;
-        }
-        .shop-section {
-            padding: 80px 0;
-            min-height: auto;
+            height: 52px;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 9999;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Section 1: Product */
-        .product-split {
-            display: grid;
-            grid-template-columns: 60% 40%;
-            gap: 60px;
-            margin-top: 100px;
+        .global-nav a {
+            color: #1d1d1f;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            opacity: 0.8;
+            transition: opacity 0.2s;
         }
-        @media (max-width: 968px) {
-            .product-split {
-                grid-template-columns: 1fr;
+
+        .global-nav a:hover {
+            opacity: 1;
+        }
+        
+        .shop-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px 120px;
+            display: flex;
+            gap: 80px;
+        }
+        
+        @media (max-width: 900px) {
+            .shop-container {
+                flex-direction: column;
+                padding-top: 40px;
+                gap: 40px;
             }
         }
-        .product-gallery {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .gallery-main {
-            width: 100%;
-            aspect-ratio: 4/5;
-            object-fit: cover;
-            border: 0.5px solid #E5E5E7;
-            border-radius: 4px;
-        }
-        .gallery-thumbnails {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .gallery-thumb {
-            width: 100%;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            border: 0.5px solid #E5E5E7;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: border-color 0.2s;
-        }
-        .gallery-thumb.active { border: 1px solid #1D1D1F; }
 
-        .purchase-panel { padding-top: 20px; }
-        .eyebrow {
-            font-size: 11px;
-            color: #6E6E73;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            margin-bottom: 16px;
+        /* Left side - Sticky Image */
+        .shop-left {
+            flex: 1;
         }
-        .product-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 52px;
-            font-weight: 300;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-            line-height: 1.1;
-        }
-        .status-badge {
-            display: inline-block;
-            background: #F5F5F5;
-            color: #6E6E73;
-            font-size: 11px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 100px;
-            margin-bottom: 16px;
-        }
-        .cert-row {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-        .cert-pill {
-            border: 0.5px solid #E5E5E7;
-            padding: 4px 12px;
-            font-size: 11px;
-            color: #6E6E73;
-            border-radius: 100px;
-        }
-        .price {
-            font-size: 20px;
-            font-weight: 400;
-            color: #6E6E73;
-            margin-bottom: 8px;
-        }
-        .label-head {
-            font-size: 11px;
-            color: #6E6E73;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .what-it-adds { margin-bottom: 24px; }
-        .adds-row {
-            display: flex;
-            gap: 8px;
-            font-size: 13px;
-            color: #6E6E73;
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-        .notify-full {
-            display: flex;
-            gap: 8px;
-            margin-top: 16px;
-            margin-bottom: 24px;
-        }
-        .notify-input {
-            flex-grow: 1;
-            height: 52px;
-            border: 0.5px solid #E5E5E7;
-            padding: 0 16px;
-            font-family: var(--font-main);
-            font-size: 14px;
-            outline: none;
-            width: 10px; /* Let flex-grow handle sizing */
-        }
-        .notify-input:focus { border-color: #1D1D1F; }
-        .btn-notify-large {
-            height: 52px;
-            background: #1D1D1F;
-            color: #FFFFFF;
-            border: none;
-            padding: 0 32px;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            transition: background 0.2s;
-            white-space: nowrap;
-        }
-        .btn-notify-large:hover { background: #3d3d3f; }
-
-        .trust-row {
+        
+        .sticky-gallery {
+            position: sticky;
+            top: 100px;
+            background: #fff;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 12px;
-            font-size: 12px;
-            color: #6E6E73;
+            height: 600px;
         }
 
-        /* Section 2: How It Works */
-        .how-bg { background: #FFFFFF; border-top: 0.5px solid #E5E5E7; border-bottom: 0.5px solid #E5E5E7; }
-        .section-label {
-            font-size: 11px;
-            color: #6E6E73;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 60px;
+        .sticky-gallery img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 12px;
+            object-fit: cover;
         }
-        .section-label.center { text-align: center; }
-        .how-grid {
+
+        /* Right side - Options */
+        .shop-right {
+            flex: 1;
+            padding-top: 20px;
+        }
+        
+        .product-title {
+            font-size: 48px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+        
+        .product-price {
+            font-size: 24px;
+            color: #1d1d1f;
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+
+        .config-section {
+            margin-bottom: 40px;
+        }
+        
+        .config-section h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .config-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            grid-template-columns: 1fr;
+            gap: 16px;
         }
-        @media (max-width: 768px) { .how-grid { grid-template-columns: 1fr; } }
-        .how-col { position: relative; padding-top: 40px; }
-        .large-numeral {
-            position: absolute;
-            top: -20px;
-            left: -10px;
-            font-size: 140px;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 300;
-            color: #F0F0F0;
-            line-height: 1;
-            z-index: 0;
-            pointer-events: none;
+
+        .option-card {
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            padding: 20px;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .how-content { position: relative; z-index: 1; }
-        .how-content h4 { font-size: 18px; color: #1D1D1F; font-weight: 600; margin-bottom: 12px; }
-        .how-content p { font-size: 15px; color: #6E6E73; line-height: 1.6; }
 
-        /* Section 3: Specifications */
-        .specs-bg { background: #FAFAF8; }
-        .specs-table { width: 100%; border-collapse: collapse; }
-        .specs-table tr { border-bottom: 0.5px solid #E5E5E7; }
-        .specs-table td { padding: 20px 0; font-size: 15px; }
-        .specs-table td:first-child { color: #6E6E73; width: 40%; }
-        .specs-table td:last-child { color: #1D1D1F; font-weight: 500; }
+        .option-card:hover {
+            border-color: #86868b;
+        }
 
-        .shop-page footer { border-top: 1px solid #E5E5E7; background: #FAFAF8; }
+        .option-card.selected {
+            border-color: #0071e3;
+            border-width: 2px;
+            padding: 19px;
+            background: #fff;
+            box-shadow: 0 0 0 1px #0071e3;
+        }
+
+        .option-details h4 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            margin-top: 0;
+        }
+
+        .option-details p {
+            font-size: 12px;
+            color: #86868b;
+            margin: 0;
+        }
+
+        .option-price {
+            font-size: 14px;
+            color: #1d1d1f;
+        }
+
+        .summary-box {
+            background: #fff;
+            border-radius: 18px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        .summary-total {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-add-bag {
+            display: block;
+            width: 100%;
+            background: #0071e3;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 400;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .btn-add-bag:hover {
+            background: #0077ED;
+        }
+        
+        .apple-pay-preview {
+            margin-top: 16px;
+            height: 56px;
+            border-radius: 12px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 500;
+            font-size: 19px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .apple-pay-preview:hover {
+            transform: scale(1.01);
+        }
+        
+        .apple-pay-preview span {
+            margin-left: 6px;
+            font-weight: 600;
+        }
+
     </style>
 </head>
-<body class="shop-page">
+<body>
 
-    <nav>
-        <div class="container nav-content">
-            <div style="display: flex; align-items: center; gap: 30px;">
-                <a href="shop.html" style="text-decoration: none; color: #1D1D1F; font-weight: 500; font-size: 0.9rem; opacity: 0.7; transition: opacity 0.3s;">&larr; Back to Shop</a>
-                <div class="logo">
-                    <img src="assets/images/logo.png" alt="Perfa-Pik Logo">
-                    <span>Non-Tripod</span>
-                </div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html#about" style="color: #1D1D1F;">About</a></li>
-                <li><a href="index.html#system" style="color: #1D1D1F;">The System</a></li>
-                <li><a href="shop.html" style="color: #1D1D1F;">Shop</a></li>
-            </ul>
-        </div>
+    <nav class="global-nav">
+        <a href="index.html">← Back to Overview</a>
     </nav>
 
-    <!-- Section 1 -->
-    <section class="container shop-section">
-        <div class="product-split">
-            <!-- Left Column: Imagery -->
-            <div class="product-gallery">
-                <img src="assets/images/twist_lok_sleeve.jpg" alt="The Solo Chronos" class="gallery-main" id="mainImage">
-                <div class="gallery-thumbnails">
-                    <img src="assets/images/twist_lok_sleeve.jpg" alt="Detail" class="gallery-thumb active" onclick="updateImage(this, 'assets/images/twist_lok_sleeve.jpg')">
-                    <img src="assets/images/product_profile.jpg" alt="Action" class="gallery-thumb" onclick="updateImage(this, 'assets/images/product_profile.jpg')">
-                    <img src="assets/images/ball_head_detail.jpg" alt="Ball head" class="gallery-thumb" onclick="updateImage(this, 'assets/images/ball_head_detail.jpg')">
-                </div>
-            </div>
-
-            <!-- Right Column: Purchase Panel -->
-            <div class="purchase-panel">
-                <div class="eyebrow">Ecosystem Accessory &middot; Designed in Ireland &middot; Made in England</div>
-                <h1 class="product-title" style="margin-bottom:8px;">The Solo Chronos</h1>
-                <div class="status-badge">Coming Soon</div>
-                
-                <div class="cert-row">
-                    <span class="cert-pill">CE</span>
-                    <span class="cert-pill">BEAB Approved</span>
-                    <span class="cert-pill">TÜV</span>
-                </div>
-
-                <div class="divider"></div>
-                <div class="price">Pricing to be announced</div>
-                <div class="divider"></div>
-                
-                <span class="label-head">Device compatibility</span>
-                <div class="what-it-adds">
-                    <div class="adds-row"><span>&ndash;</span><span>Compact smartphones from 4.6"</span></div>
-                    <div class="adds-row"><span>&ndash;</span><span>Standard smartphones up to 7"</span></div>
-                    <div class="adds-row"><span>&ndash;</span><span>Small tablets 10"&ndash;11" including iPad and Samsung Tab</span></div>
-                    <div class="adds-row"><span>&ndash;</span><span>Large tablets up to 13" including iPad Pro 12.9"</span></div>
-                </div>
-
-                <div class="divider"></div>
-
-                <span class="label-head">Be the first to know</span>
-                <div class="notify-full">
-                    <input type="email" placeholder="your@email.com" class="notify-input">
-                    <button class="btn-notify-large">Notify Me at Launch</button>
-                </div>
-
-                <div class="divider"></div>
-
-                <div class="trust-row">
-                    <span>Certified (CE &middot; BEAB &middot; TÜV)</span>
-                    <span>&middot;</span>
-                    <span>Designed in Ireland</span>
-                    <span>&middot;</span>
-                    <span>Free Returns</span>
-                </div>
+    <div class="shop-container">
+        <!-- Left: Image Sticky -->
+        <div class="shop-left">
+            <div class="sticky-gallery">
+                <img src="assets/images/twist_lok_sleeve.jpg" alt="The Solo Chronos Clamp">
             </div>
         </div>
-    </section>
-
-    <!-- Section 2: How it works -->
-    <section class="how-bg shop-section">
-        <div class="container">
-            <div class="section-label center">How it works</div>
-            <div class="how-grid">
-                <div class="how-col">
-                    <div class="large-numeral">01</div>
-                    <div class="how-content">
-                        <h4>Slide</h4>
-                        <p>Open the dual-rail system to fit your device width.</p>
-                    </div>
-                </div>
-                <div class="how-col">
-                    <div class="large-numeral">02</div>
-                    <div class="how-content">
-                        <h4>Lock</h4>
-                        <p>Turn the central dial to lock your device securely in place.</p>
-                    </div>
-                </div>
-                <div class="how-col">
-                    <div class="large-numeral">03</div>
-                    <div class="how-content">
-                        <h4>Mount</h4>
-                        <p>Attach to the Octopus top port or directly to your Non-Tripod.</p>
+        
+        <!-- Right: Configurator -->
+        <div class="shop-right">
+            <div style="font-size: 14px; color: #bf4800; font-weight: 600; margin-bottom: 8px;">New</div>
+            <h1 class="product-title">Buy The Solo Chronos</h1>
+            <div class="product-price">From $29</div>
+            
+            <div style="height: 1px; background: #d2d2d7; margin: 40px 0;"></div>
+            
+            <!-- Step 1 -->
+            <div class="config-section">
+                <h3>Finish. <span style="color: #86868b">Aircraft-grade anodized aluminum.</span></h3>
+                <div class="config-grid">
+                    <div class="option-card selected" style="cursor: default;">
+                        <div class="option-details">
+                            <h4>Space Black</h4>
+                            <p>Anti-reflective precision coating</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Step 2 -->
+            <div class="config-section">
+                <h3>Device Compatibility. <span style="color: #86868b">Adjusts to fit.</span></h3>
+                <div class="config-grid">
+                    
+                    <div class="option-card selected" data-price="0" id="opt-standard" onclick="toggleOption('opt-standard', 'opt-max')">
+                        <div class="option-details">
+                            <h4>Standard Size</h4>
+                            <p>Fits all smartphones</p>
+                        </div>
+                        <div class="option-price">Included</div>
+                    </div>
+
+                    <div class="option-card" data-price="10" id="opt-max" onclick="toggleOption('opt-max', 'opt-standard')">
+                        <div class="option-details">
+                            <h4>Max Edition</h4>
+                            <p>Fits iPad Pro and larger tablets</p>
+                        </div>
+                        <div class="option-price">+$10</div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="summary-box">
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span id="price-total">$29.00</span>
+                </div>
+                <a href="checkout.html" class="btn-add-bag">Proceed to Checkout</a>
+                <a href="checkout.html" class="apple-pay-preview">
+                   Buy with <span> Pay</span>
+                </a>
+                <div style="text-align: center; font-size: 12px; color: #86868b; margin-top: 20px;">
+                    Free shipping and free returns.
+                </div>
+            </div>
         </div>
-    </section>
-
-    <!-- Section 3: Specifications -->
-    <section class="specs-bg shop-section">
-        <div class="container">
-            <div class="section-label">Specifications</div>
-            <table class="specs-table">
-                <tr><td>Weight</td><td>TBC</td></tr>
-                <tr><td>Device range</td><td>4.6" to 13"</td></tr>
-                <tr><td>Rail system</td><td>Dual-rod sliding mechanism</td></tr>
-                <tr><td>Locking</td><td>Central knurled dial</td></tr>
-                <tr><td>Interface</td><td>Proprietary Perfa-Pik mount</td></tr>
-                <tr><td>Finish</td><td>Matte black anodised</td></tr>
-                <tr><td>Designed</td><td>Ireland</td></tr>
-                <tr><td>Manufactured</td><td>England UK</td></tr>
-                <tr><td>Status</td><td>In development</td></tr>
-            </table>
-        </div>
-    </section>
-
-
-
-    <footer class="container" style="padding: 60px 0; text-align: center;">
-        <img src="assets/images/logo.png" alt="Perfa-Pik" style="width: 120px; margin-bottom: 20px;">
-        <p class="text-muted" style="margin: 0; font-size: 14px;">&copy; 2026 Perfa-Pik. Position Click. All Rights Reserved.</p>
-    </footer>
+    </div>
 
     <script>
-        function updateImage(thumbElem, src) {
-            document.getElementById('mainImage').src = src;
-            document.querySelectorAll('.gallery-thumb').forEach(el => el.classList.remove('active'));
-            thumbElem.classList.add('active');
+        let basePrice = 29;
+        
+        // Function handles radio-like toggle for mutually exclusive options
+        function toggleOption(idToSelect, idToDeselect) {
+            document.getElementById(idToDeselect).classList.remove('selected');
+            document.getElementById(idToSelect).classList.add('selected');
+            updateTotal();
         }
+        
+        function updateTotal() {
+            let total = basePrice;
+            document.querySelectorAll('.option-card.selected[data-price]').forEach(card => {
+                total += parseInt(card.getAttribute('data-price'));
+            });
+            document.getElementById('price-total').innerText = '$' + total + '.00';
+            localStorage.setItem('cartTotal', total); // Save to local storage for checkout
+        }
+        
+        // init total on load
+        localStorage.setItem('cartTotal', basePrice);
     </script>
 </body>
 </html>

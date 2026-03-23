@@ -306,4 +306,96 @@ document.addEventListener('DOMContentLoaded', () => {
 
         updateReviewCarousel(0);
     }
+
+    // --- SEC 3: EXPLORE CANVAS INTERACTIVE SCRUBBER ---
+    const exploreCanvas = document.getElementById('explore-canvas');
+    if (exploreCanvas) {
+        const exploreContext = exploreCanvas.getContext('2d');
+        const exploreFrameCount = 240;
+        
+        // Use a square aspect ratio matching the canvas style (1:1)
+        exploreCanvas.width = 1080;
+        exploreCanvas.height = 1080;
+
+        const currentExploreFrame = index => `assets/sequence2/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`;
+        const exploreImages = [];
+        let currentExploreIndex = 1;
+        let targetExploreIndex = 1;
+        
+        // Preload images
+        for (let i = 1; i <= exploreFrameCount; i++) {
+            const img = new Image();
+            img.src = currentExploreFrame(i);
+            exploreImages.push(img);
+            img.onload = () => {
+                if (i === 1) renderExploreImage(exploreImages[0]);
+            };
+        }
+
+        function renderExploreImage(img) {
+            if (!img) return;
+            const hRatio = exploreCanvas.width / img.width;
+            const vRatio = exploreCanvas.height / img.height;
+            const ratio = Math.max(hRatio, vRatio); // Max makes it Cover
+
+            const centerShift_x = (exploreCanvas.width - img.width * ratio) / 2;
+            const centerShift_y = (exploreCanvas.height - img.height * ratio) / 2;
+
+            exploreContext.clearRect(0, 0, exploreCanvas.width, exploreCanvas.height);
+            exploreContext.fillStyle = '#050505';
+            exploreContext.fillRect(0, 0, exploreCanvas.width, exploreCanvas.height);
+            exploreContext.drawImage(img, 0, 0, img.width, img.height,
+                centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
+        }
+
+        // Animation Loop to smoothly scrub to target frame
+        function animateExploreCanvas() {
+            if (currentExploreIndex !== targetExploreIndex) {
+                const diff = targetExploreIndex - currentExploreIndex;
+                if (Math.abs(diff) < 0.5) {
+                    currentExploreIndex = targetExploreIndex;
+                } else {
+                    currentExploreIndex += diff * 0.1; // Smooth inertia interpolation factor
+                }
+                
+                const frameToRender = Math.round(currentExploreIndex) - 1; // 0-indexed array
+                if (exploreImages[frameToRender]) {
+                    renderExploreImage(exploreImages[frameToRender]);
+                }
+            }
+            requestAnimationFrame(animateExploreCanvas);
+        }
+        
+        requestAnimationFrame(animateExploreCanvas);
+
+        // Map Pill clicks to target frames
+        const explorePills = document.querySelectorAll('.explore-pill');
+        explorePills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                // Remove active classes from all
+                explorePills.forEach(p => {
+                    p.classList.remove('active');
+                    p.style.background = 'rgba(255,255,255,0.05)';
+                    const icon = p.querySelector('.pill-icon');
+                    if(icon) {
+                        icon.style.background = 'transparent';
+                        icon.innerHTML = '+';
+                    }
+                });
+
+                // Set new active class for clicked pill
+                pill.classList.add('active');
+                pill.style.background = 'rgba(255,255,255,0.15)';
+                const activeIcon = pill.querySelector('.pill-icon');
+                if(activeIcon) {
+                    activeIcon.style.background = '#C9A96E'; 
+                    activeIcon.innerHTML = ''; // removed the + 
+                }
+
+                // Update animation target frame
+                targetExploreIndex = parseInt(pill.getAttribute('data-target-frame'), 10) || 1;
+            });
+        });
+    }
+
 });
