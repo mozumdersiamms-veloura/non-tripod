@@ -28,26 +28,12 @@
         </div>
     </div>
 
-    <!-- Slide 1: Hero Fullscreen Scrollytelling -->
-    <div class="hero-scroll-container" id="about">
-        <section class="hero-sticky-slide">
-            <!-- Fullscreen Canvas Background -->
-            <div class="canvas-container">
-                <canvas id="hero-canvas"></canvas>
-            </div>
-
-            <!-- Apple-style hero text overlay -->
-            <div class="apple-hero-text reveal active" style="pointer-events: none;">
-                <h3>The Perfa-Pik</h3>
-                <h1>NON-TRIPOD</h1>
-            </div>
-
-            <div class="hero-buttons-container">
-                <a href="shop.html" class="btn-apple-buy-large">Buy</a>
-                <p class="apple-price-text">From $149 or $12.41/mo. for 12 mo.*</p>
-            </div>
-        </section>
-    </div>
+    <!-- Slide 1: Hero Video Section -->
+    <section id="about" style="position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center;">
+        <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+            <source src="Product_rotate_fade_202603241850.mp4" type="video/mp4">
+        </video>
+    </section>
 
     <!-- Apple-style Highlights Carousel Section -->
     <section class="highlights-section">
