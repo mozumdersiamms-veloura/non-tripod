@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (exploreCanvas) {
         const exploreContext = exploreCanvas.getContext('2d');
         const exploreFrameCount = 240;
-        
+
         // Use a square aspect ratio matching the canvas style (1:1)
         exploreCanvas.width = 1080;
         exploreCanvas.height = 1080;
@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const exploreImages = [];
         let currentExploreIndex = 1;
         let targetExploreIndex = 1;
-        
+
         // Preload images
         for (let i = 1; i <= exploreFrameCount; i++) {
             const img = new Image();
@@ -357,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     currentExploreIndex += diff * 0.1; // Smooth inertia interpolation factor
                 }
-                
+
                 const frameToRender = Math.round(currentExploreIndex) - 1; // 0-indexed array
                 if (exploreImages[frameToRender]) {
                     renderExploreImage(exploreImages[frameToRender]);
@@ -365,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             requestAnimationFrame(animateExploreCanvas);
         }
-        
+
         requestAnimationFrame(animateExploreCanvas);
 
         // Map Pill clicks to target frames
@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     p.classList.remove('active');
                     p.style.background = 'rgba(255,255,255,0.05)';
                     const icon = p.querySelector('.pill-icon');
-                    if(icon) {
+                    if (icon) {
                         icon.style.background = 'transparent';
                         icon.innerHTML = '+';
                     }
@@ -387,8 +387,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 pill.classList.add('active');
                 pill.style.background = 'rgba(255,255,255,0.15)';
                 const activeIcon = pill.querySelector('.pill-icon');
-                if(activeIcon) {
-                    activeIcon.style.background = '#C9A96E'; 
+                if (activeIcon) {
+                    activeIcon.style.background = '#C9A96E';
                     activeIcon.innerHTML = ''; // removed the + 
                 }
 

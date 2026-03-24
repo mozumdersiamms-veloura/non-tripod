@@ -1123,17 +1123,17 @@ footer {
     width: 100%;
     z-index: 999;
     padding: 12px 0;
-    
+
     /* Initially transparent */
     background: rgba(29, 29, 31, 0);
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
     border-bottom: 1px solid rgba(255, 255, 255, 0);
-    
+
     /* Apple fluid transition timing */
     transition: background 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-                backdrop-filter 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-                border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        backdrop-filter 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+        border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .apple-subnav.scrolled {
@@ -1312,9 +1312,21 @@ footer {
     }
 }
 
-.highlight-slide.black-slide { background: #000; border: 1px solid #333; }
-.highlight-slide.dark-slide { background: #1a1a1c; }
-.highlight-slide.silver-slide { background: #e5e5ea; color: #111; }
+.highlight-slide.black-slide {
+    background: #000;
+    border: 1px solid #333;
+}
+
+.highlight-slide.dark-slide {
+    background: #000;
+    border: 1px solid #333;
+}
+
+.highlight-slide.silver-slide {
+    background: #000;
+    border: 1px solid #333;
+    color: #fff;
+}
 
 .slide-text-top {
     position: absolute;
@@ -1393,6 +1405,7 @@ footer {
 .h-dot.active {
     background: #fff;
 }
+
 @media (max-width: 768px) {
     .about-title {
         font-size: 3.5rem;
