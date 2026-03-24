@@ -222,17 +222,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Handle Navbar transparency on scroll
-    const nav = document.querySelector('nav');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            nav.style.padding = '15px 0';
-            nav.style.background = 'rgba(206, 206, 206, 0.9)';
-        } else {
-            nav.style.padding = '20px 0';
-            nav.style.background = 'rgba(206, 206, 206, 0.7)';
-        }
-    });
+    // Handle Navbar transparency and Apple Glass effect on scroll
+    const appleNav = document.querySelector('.apple-subnav');
+    if (appleNav) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                appleNav.classList.add('scrolled');
+            } else {
+                appleNav.classList.remove('scrolled');
+            }
+        });
+    }
 
     // --- REVIEW CAROUSEL LOGIC ---
     const reviewCards = document.querySelectorAll(".review-card");

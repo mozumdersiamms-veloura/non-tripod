@@ -1122,12 +1122,25 @@ footer {
     top: 0;
     width: 100%;
     z-index: 999;
+    padding: 12px 0;
+    
+    /* Initially transparent */
+    background: rgba(29, 29, 31, 0);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
+    
+    /* Apple fluid transition timing */
+    transition: background 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                backdrop-filter 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.apple-subnav.scrolled {
     background: rgba(29, 29, 31, 0.72);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 12px 0;
-    transition: all 0.3s;
 }
 
 .subnav-content-apple {
