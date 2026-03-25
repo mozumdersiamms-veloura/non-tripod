@@ -307,13 +307,12 @@ document.addEventListener('DOMContentLoaded', () => {
         updateReviewCarousel(0);
     }
 
-    // --- SEC 3: EXPLORE CANVAS INTERACTIVE SCRUBBER ---
+    // --- SEC 3: EXPLORE CANVAS INTERACTIVE SCRUBBER (SCROLLJACKED) ---
     const exploreCanvas = document.getElementById('explore-canvas');
     if (exploreCanvas) {
         const exploreContext = exploreCanvas.getContext('2d');
         const exploreFrameCount = 240;
 
-        // Use a square aspect ratio matching the canvas style (1:1)
         exploreCanvas.width = 1080;
         exploreCanvas.height = 1080;
 
@@ -336,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!img) return;
             const hRatio = exploreCanvas.width / img.width;
             const vRatio = exploreCanvas.height / img.height;
-            const ratio = Math.max(hRatio, vRatio); // Max makes it Cover
+            const ratio = Math.max(hRatio, vRatio);
 
             const centerShift_x = (exploreCanvas.width - img.width * ratio) / 2;
             const centerShift_y = (exploreCanvas.height - img.height * ratio) / 2;
@@ -348,53 +347,152 @@ document.addEventListener('DOMContentLoaded', () => {
                 centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
         }
 
-        // Animation Loop to smoothly scrub to target frame
         function animateExploreCanvas() {
             if (currentExploreIndex !== targetExploreIndex) {
                 const diff = targetExploreIndex - currentExploreIndex;
                 if (Math.abs(diff) < 0.5) {
                     currentExploreIndex = targetExploreIndex;
                 } else {
-                    currentExploreIndex += diff * 0.1; // Smooth inertia interpolation factor
+                    currentExploreIndex += diff * 0.1;
                 }
-
-                const frameToRender = Math.round(currentExploreIndex) - 1; // 0-indexed array
+                const frameToRender = Math.round(currentExploreIndex) - 1;
                 if (exploreImages[frameToRender]) {
                     renderExploreImage(exploreImages[frameToRender]);
                 }
             }
             requestAnimationFrame(animateExploreCanvas);
         }
-
         requestAnimationFrame(animateExploreCanvas);
 
-        // Map Pill clicks to target frames
+        // Scrolljacking Navigation
+        const exploreSection = document.querySelector('.apple-explore-section');
         const explorePills = document.querySelectorAll('.explore-pill');
-        explorePills.forEach(pill => {
-            pill.addEventListener('click', () => {
-                // Remove active classes from all
-                explorePills.forEach(p => {
-                    p.classList.remove('active');
-                    p.style.background = 'rgba(255,255,255,0.05)';
-                    const icon = p.querySelector('.pill-icon');
-                    if (icon) {
-                        icon.style.background = 'transparent';
-                        icon.innerHTML = '+';
+
+        window.addEventListener('scroll', () => {
+            if (!exploreSection) return;
+
+            const rect = exploreSection.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            if (rect.top <= windowHeight && rect.bottom >= 0) {
+                const scrolledPast = windowHeight - rect.top;
+                const totalScrollArea = rect.height + windowHeight;
+                let progress = scrolledPast / totalScrollArea;
+                progress = Math.max(0, Math.min(1, progress));
+
+                targetExploreIndex = Math.max(1, Math.floor(progress * exploreFrameCount));
+
+                // Light up pills based on targetExploreIndex
+                explorePills.forEach(pill => {
+                    const targetFrame = parseInt(pill.getAttribute('data-target-frame'), 10) || 1;
+                    if (targetExploreIndex >= targetFrame - 15 && targetExploreIndex <= targetFrame + 25) {
+                        pill.classList.add('active');
+                        pill.style.background = 'rgba(255,255,255,0.15)';
+                        pill.style.boxShadow = '0 0 20px rgba(255, 116, 66, 0.4)';
+                        const icon = pill.querySelector('.pill-icon');
+                        if (icon) {
+                            icon.style.background = '#C9A96E';
+                            icon.innerHTML = '';
+                        }
+                    } else {
+                        pill.classList.remove('active');
+                        pill.style.background = 'rgba(255,255,255,0.05)';
+                        pill.style.boxShadow = 'none';
+                        const icon = pill.querySelector('.pill-icon');
+                        if (icon) {
+                            icon.style.background = 'transparent';
+                            icon.innerHTML = '+';
+                        }
                     }
                 });
+            }
+        });
+    }
 
-                // Set new active class for clicked pill
-                pill.classList.add('active');
-                pill.style.background = 'rgba(255,255,255,0.15)';
-                const activeIcon = pill.querySelector('.pill-icon');
-                if (activeIcon) {
-                    activeIcon.style.background = '#C9A96E';
-                    activeIcon.innerHTML = ''; // removed the + 
+    // --- HIGHLIGHTS 3D PARALLAX & GLOW ---
+    const highlightSlides = document.querySelectorAll('.highlight-slide');
+    highlightSlides.forEach(slide => {
+        slide.addEventListener('mousemove', (e) => {
+            const rect = slide.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            slide.style.setProperty('--mouse-x', `${x}px`);
+            slide.style.setProperty('--mouse-y', `${y}px`);
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -5;
+            const rotateY = ((x - centerX) / centerX) * 5;
+
+            const panel = slide.querySelector('.glass-panel');
+            if (panel) panel.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+
+        slide.addEventListener('mouseleave', () => {
+            const panel = slide.querySelector('.glass-panel');
+            if (panel) {
+                panel.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                panel.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+            }
+        });
+
+        slide.addEventListener('mouseenter', () => {
+            const panel = slide.querySelector('.glass-panel');
+            if (panel) panel.style.transition = 'none';
+        });
+    });
+
+    // --- COMPACTNESS COUNTER ---
+    const compactSection = document.querySelector('.apple-compact-section');
+    const weightDisplayArray = compactSection ? compactSection.querySelectorAll('.stat-group div') : [];
+    const weightDisplay = weightDisplayArray.length > 1 ? weightDisplayArray[1] : null;
+
+    if (compactSection && weightDisplay) {
+        let counted = false;
+        const compactObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !counted) {
+                counted = true;
+                const end = 340;
+                const duration = 1500;
+                const startTime = performance.now();
+
+                function updateCounter(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const ease = 1 - Math.pow(1 - progress, 4);
+                    weightDisplay.textContent = Math.floor(ease * end) + 'g';
+                    if (progress < 1) requestAnimationFrame(updateCounter);
                 }
+                requestAnimationFrame(updateCounter);
+            }
+        }, { threshold: 0.5 });
+        compactObserver.observe(compactSection);
+    }
 
-                // Update animation target frame
-                targetExploreIndex = parseInt(pill.getAttribute('data-target-frame'), 10) || 1;
-            });
+    // --- CLOSING CINEMATIC MAGNETIC BUTTON ---
+    const magneticBtn = document.querySelector('.apple-cinematic-close div[style*="border-radius: 980px"]');
+    const closingSection = document.querySelector('.apple-cinematic-close');
+    if (magneticBtn && closingSection) {
+        // Strip inline transforms to allow exact mouse tracking
+        magneticBtn.onmouseover = null;
+        magneticBtn.onmouseout = null;
+
+        closingSection.addEventListener('mousemove', (e) => {
+            const rect = magneticBtn.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const distanceX = e.clientX - centerX;
+            const distanceY = e.clientY - centerY;
+
+            // Magnetic Radius
+            if (Math.abs(distanceX) < 120 && Math.abs(distanceY) < 120) {
+                magneticBtn.style.transform = `translateX(calc(-50% + ${distanceX * 0.3}px)) translateY(${distanceY * 0.3}px) scale(1.05)`;
+                magneticBtn.style.boxShadow = '0 20px 40px rgba(0,0,0,0.8)';
+            } else {
+                magneticBtn.style.transform = 'translateX(-50%) scale(1)';
+                magneticBtn.style.boxShadow = 'none';
+            }
         });
     }
 
