@@ -307,105 +307,47 @@ document.addEventListener('DOMContentLoaded', () => {
         updateReviewCarousel(0);
     }
 
-    // --- SEC 3: EXPLORE CANVAS INTERACTIVE SCRUBBER (SCROLLJACKED) ---
-    const exploreCanvas = document.getElementById('explore-canvas');
-    if (exploreCanvas) {
-        const exploreContext = exploreCanvas.getContext('2d');
-        const exploreFrameCount = 240;
+    // --- SEC 3: EXPLORE INTERACTIVE IMAGE SWAP ---
+    const explorePills = document.querySelectorAll('.explore-pill');
+    const exploreFeatureImage = document.getElementById('explore-feature-image');
 
-        exploreCanvas.width = 1080;
-        exploreCanvas.height = 1080;
-
-        const currentExploreFrame = index => `assets/sequence2/ezgif-frame-${index.toString().padStart(3, '0')}.jpg`;
-        const exploreImages = [];
-        let currentExploreIndex = 1;
-        let targetExploreIndex = 1;
-
-        // Preload images
-        for (let i = 1; i <= exploreFrameCount; i++) {
-            const img = new Image();
-            img.src = currentExploreFrame(i);
-            exploreImages.push(img);
-            img.onload = () => {
-                if (i === 1) renderExploreImage(exploreImages[0]);
-            };
-        }
-
-        function renderExploreImage(img) {
-            if (!img) return;
-            const hRatio = exploreCanvas.width / img.width;
-            const vRatio = exploreCanvas.height / img.height;
-            const ratio = Math.max(hRatio, vRatio);
-
-            const centerShift_x = (exploreCanvas.width - img.width * ratio) / 2;
-            const centerShift_y = (exploreCanvas.height - img.height * ratio) / 2;
-
-            exploreContext.clearRect(0, 0, exploreCanvas.width, exploreCanvas.height);
-            exploreContext.fillStyle = '#050505';
-            exploreContext.fillRect(0, 0, exploreCanvas.width, exploreCanvas.height);
-            exploreContext.drawImage(img, 0, 0, img.width, img.height,
-                centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
-        }
-
-        function animateExploreCanvas() {
-            if (currentExploreIndex !== targetExploreIndex) {
-                const diff = targetExploreIndex - currentExploreIndex;
-                if (Math.abs(diff) < 0.5) {
-                    currentExploreIndex = targetExploreIndex;
-                } else {
-                    currentExploreIndex += diff * 0.1;
-                }
-                const frameToRender = Math.round(currentExploreIndex) - 1;
-                if (exploreImages[frameToRender]) {
-                    renderExploreImage(exploreImages[frameToRender]);
-                }
-            }
-            requestAnimationFrame(animateExploreCanvas);
-        }
-        requestAnimationFrame(animateExploreCanvas);
-
-        // Scrolljacking Navigation
-        const exploreSection = document.querySelector('.apple-explore-section');
-        const explorePills = document.querySelectorAll('.explore-pill');
-
-        window.addEventListener('scroll', () => {
-            if (!exploreSection) return;
-
-            const rect = exploreSection.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            if (rect.top <= windowHeight && rect.bottom >= 0) {
-                const scrolledPast = windowHeight - rect.top;
-                const totalScrollArea = rect.height + windowHeight;
-                let progress = scrolledPast / totalScrollArea;
-                progress = Math.max(0, Math.min(1, progress));
-
-                targetExploreIndex = Math.max(1, Math.floor(progress * exploreFrameCount));
-
-                // Light up pills based on targetExploreIndex
-                explorePills.forEach(pill => {
-                    const targetFrame = parseInt(pill.getAttribute('data-target-frame'), 10) || 1;
-                    if (targetExploreIndex >= targetFrame - 15 && targetExploreIndex <= targetFrame + 25) {
-                        pill.classList.add('active');
-                        pill.style.background = 'rgba(255,255,255,0.15)';
-                        pill.style.boxShadow = '0 0 20px rgba(255, 116, 66, 0.4)';
-                        const icon = pill.querySelector('.pill-icon');
-                        if (icon) {
-                            icon.style.background = '#C9A96E';
-                            icon.innerHTML = '';
-                        }
-                    } else {
-                        pill.classList.remove('active');
-                        pill.style.background = 'rgba(255,255,255,0.05)';
-                        pill.style.boxShadow = 'none';
-                        const icon = pill.querySelector('.pill-icon');
-                        if (icon) {
-                            icon.style.background = 'transparent';
-                            icon.innerHTML = '+';
-                        }
+    if (explorePills.length > 0 && exploreFeatureImage) {
+        explorePills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                // Reset all pills
+                explorePills.forEach(p => {
+                    p.classList.remove('active');
+                    p.style.background = 'rgba(255,255,255,0.05)';
+                    p.style.boxShadow = 'none';
+                    const icon = p.querySelector('.pill-icon');
+                    if (icon) {
+                        icon.style.background = 'transparent';
+                        icon.innerHTML = '+';
                     }
                 });
-            }
+
+                // Activate clicked pill
+                pill.classList.add('active');
+                pill.style.background = 'rgba(255,255,255,0.15)';
+                pill.style.boxShadow = '0 0 20px rgba(255, 116, 66, 0.4)';
+                const activeIcon = pill.querySelector('.pill-icon');
+                if (activeIcon) {
+                    activeIcon.style.background = '#C9A96E';
+                    activeIcon.innerHTML = '';
+                }
+
+                // Update Image with crossfade
+                const newImgSrc = pill.getAttribute('data-img');
+                if (newImgSrc) {
+                    exploreFeatureImage.style.opacity = '0';
+                    setTimeout(() => {
+                        exploreFeatureImage.src = newImgSrc;
+                        exploreFeatureImage.onload = () => {
+                            exploreFeatureImage.style.opacity = '1';
+                        };
+                    }, 300); // Wait partially for fade out
+                }
+            });
         });
     }
 

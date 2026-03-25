@@ -202,58 +202,35 @@
             <div style="display: flex; flex-wrap: wrap; gap: 60px; align-items: center;">
 
                 <!-- Left: Feature Toggles -->
-                <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 16px;"
-                    id="explore-pills">
+                <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 16px;" id="explore-pills">
 
                     <!-- Active Item -->
-                    <div class="explore-pill active" data-target-frame="1"
-                        style="background: rgba(255,255,255,0.15); border-radius: 980px; padding: 14px 24px; display: inline-flex; align-items: center; gap: 16px; cursor: pointer; width: fit-content; transition: background 0.3s;">
-                        <div class="pill-icon"
-                            style="width: 20px; height: 20px; border-radius: 50%; background: #C9A96E; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 300; padding-bottom: 2px;">
-                        </div>
-                        <span style="font-size: 17px; font-weight: 600;">Tripod</span>
+                    <div class="explore-pill active" data-img="assets/images/tripod_feature.png" style="background: rgba(255,255,255,0.15); box-shadow: 0 0 20px rgba(255, 116, 66, 0.4); border-radius: 980px; padding: 14px 24px; display: inline-flex; align-items: center; gap: 16px; cursor: pointer; width: fit-content; transition: background 0.3s;">
+                        <div class="pill-icon" style="width: 20px; height: 20px; border-radius: 50%; background: #C9A96E; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 300; padding-bottom: 2px;"></div>
+                        <span style="font-size: 17px; font-weight: 600;">Non tripod</span>
                     </div>
 
                     <!-- Inactive Items -->
-                    <div class="explore-pill" data-target-frame="30"
-                        style="background: rgba(255,255,255,0.05); border-radius: 980px; padding: 14px 24px; display: inline-flex; align-items: center; gap: 16px; cursor: pointer; width: fit-content; transition: background 0.3s;">
-                        <div class="pill-icon"
-                            style="width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 300; padding-bottom: 2px;">
-                            +</div>
-                        <span style="font-size: 17px; font-weight: 600;">Twist lock</span>
-                    </div>
-
-                    <div class="explore-pill" data-target-frame="70"
-                        style="background: rgba(255,255,255,0.05); border-radius: 980px; padding: 14px 24px; display: inline-flex; align-items: center; gap: 16px; cursor: pointer; width: fit-content; transition: background 0.3s;">
-                        <div class="pill-icon"
-                            style="width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 300; padding-bottom: 2px;">
-                            +</div>
+                    <div class="explore-pill" data-img="assets/images/clamp_feature.png" style="background: rgba(255,255,255,0.05); border-radius: 980px; padding: 14px 24px; display: inline-flex; align-items: center; gap: 16px; cursor: pointer; width: fit-content; transition: background 0.3s;">
+                        <div class="pill-icon" style="width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 300; padding-bottom: 2px;">+</div>
                         <span style="font-size: 17px; font-weight: 600;">The clamp</span>
                     </div>
 
-                    <div class="explore-pill" data-target-frame="110"
-                        style="background: rgba(255,255,255,0.05); border-radius: 980px; padding: 14px 24px; display: inline-flex; align-items: center; gap: 16px; cursor: pointer; width: fit-content; transition: background 0.3s;">
-                        <div class="pill-icon"
-                            style="width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 300; padding-bottom: 2px;">
-                            +</div>
-                        <span style="font-size: 17px; font-weight: 600;">The Octopus</span>
+                    <div class="explore-pill" data-img="assets/images/twistlock_feature.png" style="background: rgba(255,255,255,0.05); border-radius: 980px; padding: 14px 24px; display: inline-flex; align-items: center; gap: 16px; cursor: pointer; width: fit-content; transition: background 0.3s;">
+                        <div class="pill-icon" style="width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 300; padding-bottom: 2px;">+</div>
+                        <span style="font-size: 17px; font-weight: 600;">Twist locks</span>
                     </div>
 
-                    <div class="explore-pill" data-target-frame="160"
-                        style="background: rgba(255,255,255,0.05); border-radius: 980px; padding: 14px 24px; display: inline-flex; align-items: center; gap: 16px; cursor: pointer; width: fit-content; transition: background 0.3s;">
-                        <div class="pill-icon"
-                            style="width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 300; padding-bottom: 2px;">
-                            +</div>
+                    <div class="explore-pill" data-img="assets/images/ballhead_feature.png" style="background: rgba(255,255,255,0.05); border-radius: 980px; padding: 14px 24px; display: inline-flex; align-items: center; gap: 16px; cursor: pointer; width: fit-content; transition: background 0.3s;">
+                        <div class="pill-icon" style="width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 300; padding-bottom: 2px;">+</div>
                         <span style="font-size: 17px; font-weight: 600;">The ball head</span>
                     </div>
 
                 </div>
 
-                <!-- Right: Apple Canvas Scrubber -->
-                <div
-                    style="flex: 1.5; min-width: 300px; display: flex; flex-direction: column; align-items: center; position: relative;">
-                    <canvas id="explore-canvas"
-                        style="width: 100%; max-width: 440px; aspect-ratio: 1/1; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 60px rgba(0,0,0,0.5); background: #050505;"></canvas>
+                <!-- Right: Interactive Feature Image -->
+                <div style="flex: 1.5; min-width: 300px; display: flex; flex-direction: column; align-items: center; position: relative;">
+                    <img id="explore-feature-image" src="assets/images/tripod_feature.png" alt="Feature Details" style="width: 100%; max-width: 440px; aspect-ratio: 1/1; border-radius: 30px; object-fit: cover; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 60px rgba(0,0,0,0.5); background: #050505; transition: opacity 0.4s ease;">
                 </div>
 
             </div>
