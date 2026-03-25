@@ -1395,7 +1395,7 @@ footer {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-.play-pause-btn {
+.nav-arrow-btn {
     background: none;
     border: none;
     color: #fff;
@@ -1403,6 +1403,14 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2px;
+    opacity: 0.7;
+    transition: opacity 0.3s, transform 0.2s;
+}
+
+.nav-arrow-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
 }
 
 .highlights-dots {

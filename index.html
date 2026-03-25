@@ -46,28 +46,27 @@
 
         <div class="highlights-carousel">
             <div class="highlights-track" id="highlightsTrack">
-
                 <div class="highlight-slide black-slide">
-                    <img src="assets/images/card-system.png" alt="Highlight 1" class="slide-bg-image">
+                    <img src="assets/images/flexibility_slide.png" alt="Highlight 1" class="slide-bg-image">
                     <div class="glass-panel">
-                        <h3>One. Not four.</h3>
-                        <p>One mount replaces your mic arm, light stand, phone tripod, and camera rig.</p>
+                        <h3>Flexibility.</h3>
+                        <p>Explore infinite possibilities. Set it to dynamic overhead angles, functioning precisely like a rigid magic arm.</p>
                     </div>
                 </div>
 
                 <div class="highlight-slide dark-slide">
-                    <img src="assets/images/card-carbon.png" alt="Highlight 2" class="slide-bg-image">
+                    <img src="assets/images/compactness_slide.png" alt="Highlight 2" class="slide-bg-image">
                     <div class="glass-panel">
-                        <h3>Pocket-sized. Pro-grade.</h3>
-                        <p>340g. A third the size of a standard tripod. Takes up less space than your lens case.</p>
+                        <h3>Compactness.</h3>
+                        <p>Folded down securely, it's small and lightweight enough to slip right into your pocket or lens bag.</p>
                     </div>
                 </div>
 
                 <div class="highlight-slide silver-slide">
-                    <img src="assets/images/card-profile.jpg" alt="Highlight 3" class="slide-bg-image">
+                    <img src="assets/images/quality_slide.png" alt="Highlight 3" class="slide-bg-image">
                     <div class="glass-panel">
-                        <h3>Carbon core. Zero compromise.</h3>
-                        <p>Carbon fibre and aircraft-grade aluminium. CE, BEAB and TÜV certified. Engineered in England.</p>
+                        <h3>Exquisite Quality.</h3>
+                        <p>Machined from aerospace-grade carbon fibre and premium aluminium, built for sophisticated perfection.</p>
                     </div>
                 </div>
 
@@ -75,10 +74,9 @@
 
             <div class="highlights-controls">
                 <div class="controls-pill">
-                    <button class="play-pause-btn" id="highlightsPlayBtn">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                            <rect x="6" y="4" width="4" height="16"></rect>
-                            <rect x="14" y="4" width="4" height="16"></rect>
+                    <button class="nav-arrow-btn" id="highlightsPrevBtn" aria-label="Previous">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
                         </svg>
                     </button>
                     <div class="highlights-dots">
@@ -86,6 +84,11 @@
                         <div class="h-dot"></div>
                         <div class="h-dot"></div>
                     </div>
+                    <button class="nav-arrow-btn" id="highlightsNextBtn" aria-label="Next">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -95,10 +98,9 @@
         document.addEventListener('DOMContentLoaded', () => {
             const track = document.getElementById('highlightsTrack');
             const dots = document.querySelectorAll('.h-dot');
-            const playBtn = document.getElementById('highlightsPlayBtn');
+            const prevBtn = document.getElementById('highlightsPrevBtn');
+            const nextBtn = document.getElementById('highlightsNextBtn');
             let currentSlide = 0;
-            let isPlaying = true;
-            let slideInterval;
 
             function updateCarousel() {
                 track.style.transform = `translateX(calc(-${currentSlide * 100}% - ${currentSlide * 20}px))`;
@@ -107,30 +109,17 @@
                 });
             }
 
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % dots.length;
-                updateCarousel();
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentSlide = (currentSlide - 1 + dots.length) % dots.length;
+                    updateCarousel();
+                });
             }
 
-            function startAutoplay() {
-                if (!slideInterval) {
-                    slideInterval = setInterval(nextSlide, 3500);
-                    isPlaying = true;
-                    playBtn.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
-                }
-            }
-
-            function stopAutoplay() {
-                if (slideInterval) clearInterval(slideInterval);
-                slideInterval = null;
-                isPlaying = false;
-                playBtn.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><polygon points="5,3 19,12 5,21"></polygon></svg>';
-            }
-
-            if (playBtn) {
-                playBtn.addEventListener('click', () => {
-                    if (isPlaying) stopAutoplay();
-                    else startAutoplay();
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentSlide = (currentSlide + 1) % dots.length;
+                    updateCarousel();
                 });
             }
 
@@ -138,11 +127,32 @@
                 dot.addEventListener('click', () => {
                     currentSlide = i;
                     updateCarousel();
-                    stopAutoplay();
                 });
             });
 
-            startAutoplay();
+            // Touch support for manual sliding
+            let touchStartX = 0;
+            let touchEndX = 0;
+            track.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, {passive: true});
+            
+            track.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                if (touchStartX - touchEndX > 50) {
+                    // Swipe left maps to next slide
+                    currentSlide = (currentSlide + 1) % dots.length;
+                    updateCarousel();
+                } else if (touchEndX - touchStartX > 50) {
+                    // Swipe right maps to previous slide
+                    currentSlide = (currentSlide - 1 + dots.length) % dots.length;
+                    updateCarousel();
+                }
+            }
         });
     </script>
 
